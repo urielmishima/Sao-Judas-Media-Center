@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/conteudo.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Conteúdo</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <a href="timeline.html" class="navbar-brand"><img src="img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
+                style="width:210px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <form class="form-inline my-2  ml-auto my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+
+    <section class="post">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--Postagem-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <strong class="d-block text-gray-dark">@username</strong><small class="text-muted">Há
+                                5min.</small>
+                        </div>
+                        <div class="card-body">
+                            <a class="card-link" href="#">
+                                <h5 class="card-title mb-4">Lorem ipsum dolor sit amet, consectetur
+                                    adip.</h5>
+                            </a>
+                            <img class="card-img-top" src="img/cidade.jpg" alt="Card image cap">
+                            <div class="post-tags mt-2">
+                                <span class="badge badge-primary">Viagem</span>
+                                <span class="badge badge-primary">Mundo</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-secondary bmd-btn" style="width:100%"><i
+                                            class="material-icons icon">thumb_up</i>Like</button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-secondary bmd-btn" style="width: 100%"><i
+                                            class="material-icons icon">comment</i>Comentar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Comentários-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="card mt-4">
+                        <div class="card-header">Comentários recentes</div>
+                        <div class="card-body">
+                            <div class=" bg-white rounded box-shadow">
+                                <div class="media text-muted pt-3">
+                                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                        <strong class="d-block text-gray-dark">@username</strong>
+                                        Lorem ipsum dolor sit amet
+                                    </p>
+                                </div>
+                                <div class="media text-muted pt-3">
+                                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                        <strong class="d-block text-gray-dark">@username</strong>
+                                        Post muito legal
+                                    </p>
+                                </div>
+                                <div class="media text-muted pt-3">
+                                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                        <strong class="d-block text-gray-dark">@username</strong>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam soluta,
+                                        doloremque modi, sequi ipsum at ut voluptatibus corporis quos doloribus ipsa
+                                        nesciunt incidunt eaque assumenda! Quis perspiciatis repellat veniam. Veniam.
+
+                                    </p>
+                                </div>
+                                <div class="media text-muted pt-3">
+                                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                        <strong class="d-block text-gray-dark">@username</strong>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident maiores
+                                        exercitationem laudantium sit voluptatibus! Incidunt quis corrupti ipsum enim,
+                                        tempora sit accusamus quisquam earum esse odit nulla ducimus magni! Nisi?
+                                    </p>
+                                </div>
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="comentario">Adicionar comentário</label>
+                                        <input type="text" name="comentario" id="comentario" class="form-control">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

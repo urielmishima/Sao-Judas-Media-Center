@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Cadastrar Estagiário</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <img src="img/logo-mediacenter-bgwhite.png" class="logo" style="width:200px;margin-top:10px" alt="">
+                </div>
+                <hr>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">
+                            
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Cadastro de Estagiários</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario">Usuário</label>
+                                <input type="text" name="usuario" id="usuario" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha">Senha</label>
+                                <input type="password" name="senha" id="senha" class="form-control">
+                            </div>
+                        </form>
+                        <button type="submit" class="btn btn-outline-success">Salvar</button>
+                        <a href="login.html" class="btn btn-secondary">Retornar</a>
+                    </div>
+                </div>
+
+        </div>
+        </main>
+    </div>
+    </div>
+
+
+
+
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("menuMostrado");
+        });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

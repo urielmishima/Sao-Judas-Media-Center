@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Atualizar Informações</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <a href="timeline.html" class="navbar-brand"><img src="img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
+                style="width:210px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <form class="form-inline my-2  ml-auto my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <div class="profile-user-pic">
+                        <img src="img/avatar-372-456324.png" alt="Usuário" class="img-responsive img-circle img-user">
+                    </div>
+                    <div class="profile-user-title">
+                        <div class="profile-user-name">
+                            John Lennon
+                        </div>
+                        <div class="profile-user-job">
+                            <span class="badge badge-primary profissao-badge">online</span>
+                        </div>
+                    </div> <hr>
+                    <div class="profile-user-menu text-center">
+                        <span class="badge badge-success">85 seguidores</span>
+                        <span class="badge badge-info">16 likes</span>
+                        <span class="badge badge-dark">5 posts</span>
+                    </div>
+                    <div class="profile-user-buttons">
+                        <a href="#" class="btn btn-outline-success">Informações</a>
+                        <button class="btn btn-danger btn-sm">Sair</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-8 col-md-9">
+                <!--Ativar o alert através do botão de salvar-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Sucesso!</strong> Seus dados foram atualizados.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card mt-1">
+                    <div class="card-header">Atualizar informações</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Informações Pessoais</h5>
+                        <hr>
+                        <form>
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" class="form-control" placeholder="John"
+                                    autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="sobrenome">Sobrenome</label>
+                                <input type="text" name="sobrenome" id="sobrenome" class="form-control"
+                                    placeholder="Lennon">
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Empresa</label>
+                                <input type="text" name="empresa" id="empresa" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" name="phone" id="phone" class="form-control" placeholder="2532-9567">
+                            </div>
+                        </form>
+                        <h5 class="card-title">Informações de Login</h5>
+                        <hr>
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario">Usuário</label>
+                                <input type="text" name="usuario" id="usuario" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha">Senha</label>
+                                <input type="password" name="senha" id="senha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirma">Confirmar senha</label>
+                                <input type="password" name="confirma" id="confirma" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-success">Salvar</button>
+                        <a href="timeline.html" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

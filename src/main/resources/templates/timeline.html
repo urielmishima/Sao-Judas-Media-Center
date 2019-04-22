@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="/css/timeline.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Timeline</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <a href="timeline.html" class="navbar-brand"><img src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
+                style="width:210px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <form class="form-inline my-2  ml-auto my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row profile">
+            <div class="col-md-2">
+                <div class="profile-sidebar">
+                    <div class="profile-user-pic">
+                        <img src="/img/avatar-372-456324.png" alt="Usuário" class="img-responsive img-circle img-user">
+                    </div>
+                    <div class="profile-user-title" th:if="${usuario}">
+                        <div class="profile-user-name" th:text="${usuario.nome}">
+                            Convidado
+                        </div>
+                        <div class="profile-user-job">
+                            <span class="badge badge-primary profissao-badge">UX Designer</span>
+                        </div>
+                    </div>
+                    <div class="profile-user-title">
+                        <div class="profile-user-name" th:if="${usuario} == null">
+                            Convidado
+                        </div>
+                        <div class="profile-user-job">
+                            <span class="badge badge-primary profissao-badge">Usuario Comum</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="profile-user-menu text-center">
+                        <span class="badge badge-success">85 seguidores</span>
+                        <span class="badge badge-info">16 likes</span>
+                        <span class="badge badge-dark">5 posts</span>
+                    </div>
+                    <div class="profile-user-buttons">
+                        <a href="usuario.html" class="btn btn-outline-success">Informações</a>
+                        <button class="btn btn-danger btn-sm">Sair</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 col-md-12">
+                <!--tabs-->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a href="#recentes" id="nav-recentes-tab" class="nav-item nav-link active" data-toggle="tab"
+                            aria-controls="recentes">Mais recentes</a>
+                        <a href="#lidas" id="nav-lidas-tab" class="nav-item nav-link" data-toggle="tab"
+                            aria-controls="lidas">Mais lidas</a>
+                        <a href="#tags" id="nav-tags-tab" class="nav-item nav-link" data-toggle="tab"
+                            aria-controls="nav-tags">Busca por tag</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <!--Mais recentes-->
+                    <div class="tab-pane fade show active" id="recentes" role="tabpanel"
+                        aria-labelledby="nav-recentes-tab">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-12" th:each="conteudo : ${maisRecentes}">
+                                    <div class="card mt-4">
+                                        <div class="card-header">
+	                                        <a class="card-link" href="conteudo.html">
+	                                                <h5 class="card-title mb-4" th:text="${conteudo.titulo}">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+	                                        </a>
+	                                        <small class="text-muted">Há 1h.</small>
+                                        </div>
+                                        <div class="card-body">                                            
+                                            <p class="card-text" th:text="${conteudo.descricao}">Curto muito essa música, me faz lembrar dos anos 80!
+                                            </p>
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item"
+                                                    src="https://www.youtube.com/embed/watch?v=9JciBwqKWR4"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <div class="post-tags mt-2">
+                                                <span class="badge badge-primary">Música</span>
+                                                <span class="badge badge-primary">Cultura</span>
+                                                <span class="badge badge-primary">Vídeos</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-secondary bmd-btn"
+                                                        style="width:100%"><i
+                                                            class="material-icons icon">thumb_up</i>Like</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-secondary bmd-btn"
+                                                        style="width: 100%"><i
+                                                            class="material-icons icon">comment</i>Comentar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Mais lidas-->
+                    <div class="tab-pane fade" id="lidas" role="tabpanel" aria-labelledby="nav-lidas-tab">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-12" th:each="conteudo2 : ${maisLidas}">
+                                    <div class="card mt-4">
+                                        <div class="card-header"><a class="card-link" href="conteudo.html">
+	                                                <h5 class="card-title mb-4" th:text="${conteudo2.titulo}">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+	                                        </a><small
+                                                class="text-muted">Há 15min.</small></div>
+                                        <div class="card-body">
+                                        <p class="card-text" th:text="${conteudo2.descricao}">Curto muito essa música, me faz lembrar dos anos 80!
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item"
+                                                    src="https://www.youtube.com/embed/watch?v=9JciBwqKWR4"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <div class="post-tags mt-2">
+                                                <span class="badge badge-primary">Vídeo</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-secondary bmd-btn"
+                                                        style="width:100%"><i
+                                                            class="material-icons icon">thumb_up</i>Like</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-secondary bmd-btn"
+                                                        style="width: 100%"><i
+                                                            class="material-icons icon">comment</i>Comentar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Busca por tags-->
+                    <div class="tab-pane fade" id="tags" role="tabpanel" aria-labelledby="nav-tags-tab">
+                        <button type="button" class="btn btn-primary">Esportes
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Cultura
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Tecnologia
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Música
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Estudo
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Saúde
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Streams
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Jogos
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Política
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Religião
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Finanças
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button type="button" class="btn btn-primary">Psicologia
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

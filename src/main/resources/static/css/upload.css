@@ -1,0 +1,52 @@
+@font-face {
+    font-family: Graviola;
+    src: url(../fonts/graviola-soft-medium.otf);
+}
+
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-image: url(../img/bg-scholarships.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.card-header {
+    font-size: 2em;
+    font-family: 'Graviola', sans-serif;
+}
+
+.btn-info {
+    position: relative;
+    right: 430px;
+}
+
+.btn {
+    font-weight: bold !important;
+    background-color: #ff356f !important;
+    color: white !important;
+    border-radius: 2em !important;
+}
+
+.btn:hover {
+    background-color: #b72d55 !important;
+}
+
+.modal-title {
+    font-family: 'Graviola', sans-serif;
+}
+
+.modal-title::after {
+    content: '';
+    display: block;
+    width: 350px;
+    height: 1px;
+    margin-top: 10px;
+    opacity: .5;
+    background: #cdcdcd;
+}

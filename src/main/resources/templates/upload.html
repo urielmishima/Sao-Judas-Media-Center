@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/upload.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Upload</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <a href="home.html" class="navbar-brand mx-auto"><img src="img/logo-mediacenter.png" alt="Logo Media Center"
+                style="width: 210px"></a>
+    </nav>
+
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="nav-link active" href="home.html">Dashboard</a>
+                <a class="nav-link" href="#">
+                    Usuários
+                    <span class="badge badge-pill bg-light align-text-bottom">27</span>
+                </a>
+                <a class="nav-link" href="#">Atualizações</a>
+                <a class="nav-link" href="#">Sugestões</a>
+                <a class="nav-link" href="upload.html">Upload</a>
+                <a class="nav-link" href="confeccao.html">Confecção</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card  mt-5">
+                    <div class="card-header text-center">Faça upload de conteúdo</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="tags">Tags</label>
+                                <input type="text" name="tags" id="tags" class="form-control" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="file" id="file" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="acesso" id="livre" class="form-control">
+                                        Material livre ao público
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="acesso" id="cadastro" class="form-control">
+                                        Livre acesso mediante a cadastro
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="economia" id="economia"> Economia
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="esportes" id="esportes"> Esportes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="brasil" id="brasil"> Brasil
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="mundo" id="mundo"> Mundo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="cultura" id="cultura"> Cultura
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="tecnologia" id="tecnologia"> Tecnologia
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="musica" id="musica"> Música
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="politica" id="politica"> Política
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <br>
+                            <button type="submit" class="btn" data-toggle="snackbar" data-content="Conteúdo enviado com sucesso!" data-html-allowed="true" data-timeout="0">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

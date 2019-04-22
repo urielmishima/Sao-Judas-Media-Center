@@ -1,0 +1,100 @@
+@font-face {
+    font-family: Graviola;
+    src: url(../fonts/graviola-soft-medium.otf);
+}
+
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-image: url(../img/bg-scholarships.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.navbar {
+    background-color: #353c86;
+}
+
+.profile {
+    margin: 20px 0;  
+}
+
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: rgb(230, 230, 230);
+    border-radius: 10px;
+}
+
+.img-user {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+}
+
+.profile-user-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-user-name {
+    font-family: 'Graviola', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 7px;
+}
+
+.profile-user-job {
+    text-transform: uppercase;
+    color: #5babd1;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-user-buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-user-menu {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.profissao-badge {
+    padding: 5px !important;
+}
+
+.btn {
+    font-size: 11px;
+    font-weight: 600 !important;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.card {
+    border-radius: 1.5em !important;
+}
+
+.card-title {
+    font-family: 'Graviola', sans-serif;
+}
+
+@media(max-width:766px) {
+    .alert {
+        margin-top: 10px;
+    }
+}
+
+@media(min-width:768px) and (max-width:1100px) {
+    .profile-sidebar {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,64 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url(../img/bg-scholarships.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.form-header {
+    text-indent: -9999px;
+    background: url(../img/logo-mediacenter-bgwhite.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    padding: 1.5em;
+}
+
+.btn-large {
+    font-weight: bold;
+    border-radius: 2em;
+}
+
+.card {
+    border-radius: 1.5em;
+}
+
+.card-action {
+    background-color: #353c86;
+    border-radius: 1.5em 1.5em 0 0;
+}
+
+.login {
+    position: relative;
+    top: 4em;
+}
+
+.lead {
+    padding-bottom: 15px;
+}
+
+/*mobile*/
+@media(max-width:600px) {
+    .form-header {
+        width: 100%;
+        background-size: 90%;
+    }
+}
+
+/*tablet*/
+@media(min-width:600px) and (max-width:993px) {
+    .form-header {
+        width: 100%;
+        background-size: 80%;
+    }
+}
+
+/*extra large*/
+@media(min-width:1200px) {
+    .form-header {
+        width: 100%;
+        background-size: 80%;
+    }
+}
