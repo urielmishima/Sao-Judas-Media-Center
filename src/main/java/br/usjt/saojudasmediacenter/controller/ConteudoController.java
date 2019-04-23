@@ -1,6 +1,7 @@
 package br.usjt.saojudasmediacenter.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,9 @@ public class ConteudoController {
 			conteudos = conteudoService.findByTipo(TipoAcesso.PUBLICO);
 		}
 		
-		mav.addObject("maisLidas", conteudoService.maisLidas(conteudos).subList(0, numeroConteudos));
-		mav.addObject("maisRecentes", conteudoService.maisRecentes(conteudos).subList(0, numeroConteudos));
+		mav.addObject("maisLidas", conteudoService.maisLidas(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
+		mav.addObject("maisRecentes", conteudoService.maisRecentes(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
+		System.out.println(mav.getModel().containsKey("maisVisualizadas"));
 		
 		return mav;
 	}

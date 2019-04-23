@@ -82,7 +82,8 @@ public class Init implements CommandLineRunner {
 								.setTitulo(categoria.getNome() + " " + tag.getNome() + " " + acessos.get(i))
 								.setDescricao(loremIpsum.getParagraphs(1)).setConteudo(loremIpsum.getParagraphs(1))
 								.setTipo(acessos.get(0)).setData(data).setCategorias(Arrays.asList(categoria))
-								.setTags(Arrays.asList(tag));
+								.setTags(Arrays.asList(tag))
+								.setVisualizacoes((int) (Math.random() * 100));
 
 						conteudoRepository.save(conteudo);
 					}
