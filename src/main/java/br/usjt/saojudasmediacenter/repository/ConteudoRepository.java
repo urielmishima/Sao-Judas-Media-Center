@@ -12,5 +12,7 @@ import br.usjt.saojudasmediacenter.model.Conteudo;
 public interface ConteudoRepository extends JpaRepository<Conteudo, String> {
 
 	List<Conteudo> findByTipo(TipoAcesso tipo);
+//	List<Conteudo> findByTipoOrderByVisualizacoesDesc(TipoAcesso tipo);	
+//	List<Conteudo> findOrderByVisualizacoesDesc();	
 
 }

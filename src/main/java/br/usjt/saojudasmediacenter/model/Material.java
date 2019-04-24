@@ -26,10 +26,7 @@ public class Material {
 	
 	@NotEmpty
 	private String extensao;
-	
-	@NotEmpty
-	private String caminho;
-	
+		
 	@ManyToMany(mappedBy = "materiais")
 	private List<Conteudo> conteudos;
 	
@@ -71,14 +68,6 @@ public class Material {
 		this.extensao = extensao;
 	}
 
-	public String getCaminho() {
-		return caminho;
-	}
-
-	public void setCaminho(String caminho) {
-		this.caminho = caminho;
-	}
-
 	public List<Conteudo> getConteudos() {
 		return conteudos;
 	}
@@ -101,5 +90,9 @@ public class Material {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+	
+	public String getSource() {
+		return '/' + this.getTipo() + "-dir/" + this.getId() + '.' + this.getExtensao();
 	}
 }
