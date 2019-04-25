@@ -8,4 +8,6 @@ import br.usjt.saojudasmediacenter.model.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, String> {
 
+	Categoria findByNome(String nome);
+
 }

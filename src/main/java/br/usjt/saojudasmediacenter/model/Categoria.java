@@ -19,7 +19,7 @@ public class Categoria {
 	private String id;
 	
 	@NotEmpty
-	private String Nome;
+	private String nome;
 	
 	@ManyToMany(mappedBy = "categorias")
 	private List<Conteudo> conteudos;
@@ -36,11 +36,11 @@ public class Categoria {
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public Categoria setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 		return this;
 	}
 
