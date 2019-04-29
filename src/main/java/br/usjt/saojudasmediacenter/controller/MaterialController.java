@@ -13,30 +13,26 @@ import org.springframework.web.servlet.ModelAndView;
 import br.usjt.saojudasmediacenter.model.Material;
 import br.usjt.saojudasmediacenter.service.CategoriaService;
 import br.usjt.saojudasmediacenter.service.MaterialService;
-import br.usjt.saojudasmediacenter.service.TagService;
 
 @Controller
 @RequestMapping("/materiais")
 public class MaterialController {
 	
 	@Autowired private CategoriaService categoriaService;
-	@Autowired private TagService tagService;
 	@Autowired private MaterialService materialService;
 
-	@Secured("ROLE_ESTAGIARIO")
 	@GetMapping("/upload")
+	@Secured("ROLE_ESTAGIARIO")
 	public ModelAndView upload() {
 		ModelAndView mav = new ModelAndView("upload");
 		mav.addObject("categorias", categoriaService.findAll());
-		mav.addObject("tags", tagService.findAll());
 		return mav;
 	}
 	
-	@Secured("ROLE_ESTAGIARIO")
 	@PostMapping("/upload")
-	public ModelAndView upload(@RequestParam("file") MultipartFile file, Material material) {
-		ModelAndView mav = new ModelAndView("upload");
+	@Secured("ROLE_ESTAGIARIO")
+	public String upload(@RequestParam("file") MultipartFile file, Material material) {
 		materialService.store(file, material);
-		return mav;
+		return "redirect:/materiais/upload";
 	}
 }

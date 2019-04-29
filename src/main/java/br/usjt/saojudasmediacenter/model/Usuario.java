@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.usjt.saojudasmediacenter.enums.TipoUsuario;
 
 @Entity
@@ -36,9 +38,11 @@ public class Usuario {
 	private TipoUsuario tipo;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<Sugestao> sugestoes;
 	
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<Feedback> feedbacks;
 
 	public String getId() {

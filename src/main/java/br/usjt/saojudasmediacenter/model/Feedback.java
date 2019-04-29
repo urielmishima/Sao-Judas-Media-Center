@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.usjt.saojudasmediacenter.enums.TipoFeedback;
 
 @Entity
@@ -25,9 +27,11 @@ public class Feedback {
 	private TipoFeedback feedback;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("feedbacks")
 	private Usuario usuario;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("feedbacks")
 	private Conteudo conteudo;
 
 	public String getId() {

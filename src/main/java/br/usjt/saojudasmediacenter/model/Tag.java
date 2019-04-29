@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Tag {
 	
@@ -19,9 +21,11 @@ public class Tag {
 	
 	private String nome;
 	
+	@JsonIgnoreProperties("tags")
 	@ManyToMany(mappedBy = "tags")
 	private List<Material> materiais;
 	
+	@JsonIgnoreProperties("tags")
 	@ManyToMany(mappedBy = "tags")
 	private List<Conteudo> conteudos;
 

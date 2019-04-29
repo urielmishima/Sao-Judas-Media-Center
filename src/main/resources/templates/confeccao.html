@@ -1,445 +1,534 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="css/confeccao.css">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Confecção</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/froala_editor.css">
+<link rel="stylesheet" href="../../css/froala_style.css">
+<link rel="stylesheet" href="../../css/plugins/code_view.css">
+<link rel="stylesheet" href="../../css/plugins/draggable.css">
+<link rel="stylesheet" href="../../css/plugins/colors.css">
+<link rel="stylesheet" href="../../css/plugins/emoticons.css">
+<link rel="stylesheet" href="../../css/plugins/image_manager.css">
+<link rel="stylesheet" href="../../css/plugins/image.css">
+<link rel="stylesheet" href="../../css/plugins/line_breaker.css">
+<link rel="stylesheet" href="../../css/plugins/table.css">
+<link rel="stylesheet" href="../../css/plugins/char_counter.css">
+<link rel="stylesheet" href="../../css/plugins/video.css">
+<link rel="stylesheet" href="../../css/plugins/fullscreen.css">
+<link rel="stylesheet" href="../../css/plugins/file.css">
+<link rel="stylesheet" href="../../css/plugins/quick_insert.css">
+<link rel="stylesheet" href="../../css/plugins/help.css">
+<link rel="stylesheet" href="../../css/third_party/spell_checker.css">
+<link rel="stylesheet" href="../../css/plugins/special_characters.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+<link rel="stylesheet"
+	href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+
+<link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+<link rel="stylesheet" href="/css/confeccao.css">
+<title>Confecção</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <a href="confeccao.html" class="navbar-brand mx-auto"><img src="img/logo-mediacenter.png"
-                alt="Logo Media Center" style="width:210px;"></a>
-    </nav>
+	<nav class="navbar navbar-expand-lg bg-light">
+		<a href="/conteudos/confeccao" class="navbar-brand mx-auto"><img
+			src="/img/logo-mediacenter.png" alt="Logo Media Center"
+			style="width: 210px;"></a>
+	</nav>
 
-    <!--nav do estagiario-->
-    <div class="bg-light">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="nav-link active" href="home.html">Dashboard</a>
-                <a class="nav-link" href="#">
-                    Usuários
-                    <span class="badge badge-pill bg-light align-text-bottom">27</span>
-                </a>
-                <a class="nav-link" href="#">Atualizações</a>
-                <a class="nav-link" href="#">Sugestões</a>
-                <a class="nav-link" href="upload.html">Upload</a>
-                <a class="nav-link" href="confeccao.html">Confecção</a>
-            </div>
-        </nav>
-    </div>
+	<!--nav do estagiario-->
+	<div class="bg-light">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<a class="nav-link active" href="home.html">Dashboard</a> <a
+					class="nav-link" href="#"> Usuários <span
+					class="badge badge-pill bg-light align-text-bottom">27</span>
+				</a> <a class="nav-link" href="#">Atualizações</a> <a class="nav-link"
+					href="#">Sugestões</a> <a class="nav-link" href="/materiais/upload">Upload</a>
+				<a class="nav-link" href="/conteudos/confeccao">Confecção</a>
+			</div>
+		</nav>
+	</div>
 
-    <!--card principal-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card text-center mt-5">
-                    <div class="card-header">
-                        Monte seu conteúdo
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="titulo">Título</label>
-                                <input type="text" name="titulo" id="titulo" class="form-control" required autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label for="descricao">Descrição</label>
-                                <input type="text" name="descricao" id="descricao" class="form-control">
-                            </div>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">16</span>
-                                Esportes
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">25</span>
-                                Cultura
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">41</span>
-                                Tecnologia
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">37</span>
-                                Saúde
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">12</span>
-                                Economia
-                            </button>
-                            <button type="button" class="btn btn-secondary">
-                                <span class="badge badge-primary">52</span>
-                                Estudo
-                            </button>
-                        </form>
+	<form action="/conteudos/confeccao" method="post">
+		<!--card principal-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-12">
+					<div class="card text-center mt-5">
+						<div class="card-header">Monte seu conteúdo</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label class="label-upload" for="titulo">Título</label> <input type="text"
+									name="titulo" id="titulo" class="form-control" required
+									autofocus>
+							</div>
+							<div class="form-group">
+								<label class="label-upload" for="descricao">Descrição</label> <input type="text"
+									name="descricao" id="descricao" class="form-control">
+							</div>
+							<div class="form-group">
+								<h6>Acesso:</h6>
+								<div class="radio">
+									<label class="label-upload" th:for="${tipo}" th:each="tipo : ${tipos}"> <input
+										type="radio" name="tipo" th:id="${tipo}" class="form-control"
+										th:value="${tipo}" th:text="${tipo}"> &nbsp &nbsp
+										&nbsp
+									</label>
+								</div>
+							</div>
+							<textarea name="conteudo"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                        <section class="html-editor">
-                            <div class="container">
-                                <textarea name="content" id="editor">Editor HTML</textarea>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--categorias-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-4">
-                <div class="card mt-5">
-                    <div class="card-header">Imagem</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">image</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">image</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">image</i>
-                            </div>
-                        </div>
-                        <button type="button" data-toggle="modal" data-target="#image-modal"
-                            class="btn btn-primary bmd-btn-fab">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4">
-                <div class="card mt-5">
-                    <div class="card-header">Vídeo</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">videocam</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">videocam</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">videocam</i>
-                            </div>
-                        </div>
-                        <button type="button" data-toggle="modal" data-target="#video-modal"
-                            class="btn btn-primary bmd-btn-fab">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-4">
-                <div class="card mt-5">
-                    <div class="card-header">Texto</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">textsms</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">textsms</i>
-                            </div>
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <i class="large material-icons icons">textsms</i>
-                            </div>
-                        </div>
-                        <button type="button" data-toggle="modal" data-target="#text-modal"
-                            class="btn btn-primary bmd-btn-fab">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<!--categorias-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-4">
+					<div class="card mt-5">
+						<div class="card-header">Imagem</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-4 col-lg-4 col-md-4"
+									th:each="imagem : ${imagens}">
+									<img th:src="${imagem.getSource()}" th:id="${imagem.id}" alt=""
+										style="width: 100%" class="modal-img">
+								</div>
+							</div>
+							<button type="button" data-toggle="modal"
+								data-target="#image-modal" class="btn btn-primary bmd-btn-fab">
+								<i class="material-icons">add</i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card mt-5">
+						<div class="card-header">Vídeo</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-11 embed-responsive embed-responsive-16by9"
+									th:each="video : ${videos}">
+									<video class="embed-responsive-item" width="400" controls>
+										<source th:src="${video.getSource()}" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							<button type="button" data-toggle="modal"
+								data-target="#video-modal" class="btn btn-primary bmd-btn-fab">
+								<i class="material-icons">add</i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-4">
+					<div class="card mt-5">
+						<div class="card-header">Audio</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-4 col-lg-4 col-md-4"
+									th:each="audio : ${audios}">
+									<audio class="embed-responsive-item" controls>
+										<source th:src="${audio.getSource()}" type="audio/mpeg">
+									</audio>
+								</div>
+							</div>
+							<button type="button" data-toggle="modal"
+								data-target="#text-modal" class="btn btn-primary bmd-btn-fab">
+								<i class="material-icons">add</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-    <!--Modals-->
+		<!--Modals-->
 
-    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Conteúdos relacionados</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem1.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem1.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem1.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem2.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem2.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem2.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem3.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem3.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem3.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem4.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem4.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/imagem4.jpg" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="modal fade" id="image-modal" tabindex="-1" role="dialog"
+			aria-labelledby="modal" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Conteúdos
+							relacionados</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem1.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem1.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem1.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem2.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem2.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem2.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem3.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem3.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem3.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem4.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem4.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/imagem4.jpg" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!--Modal dos vídeos-->
-    <div class="modal fade" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Conteúdos relacionados</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<!--Modal dos vídeos-->
+		<div class="modal fade" id="video-modal" tabindex="-1" role="dialog"
+			aria-labelledby="modal" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Conteúdos
+							relacionados</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item"
+										src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!--Modal dos textos-->
-    <div class="modal fade" id="text-modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Conteúdos relacionados</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4">
-                            <img src="img/txt.png" alt="" style="width:100%" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<!--Modal dos textos-->
+		<div class="modal fade" id="text-modal" tabindex="-1" role="dialog"
+			aria-labelledby="modal" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Conteúdos
+							relacionados</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+							<div class="col-sm-12 col-lg-4 col-md-4">
+								<img src="img/txt.png" alt="" style="width: 100%"
+									class="modal-img">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <br>
+		<br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <button type="button" class="btn btn-send btn-raised btn-lg btn-danger" data-toggle="modal"
-                    data-target="#modal">enviar</button>
-            </div>
-        </div>
-    </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<button type="submit"
+						class="btn btn-send btn-raised btn-lg btn-danger">enviar</button>
+				</div>
+			</div>
+		</div>
+	</form>
 
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deseja enviar?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Você pode continuar editando seu conteúdo.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Enviar</button>
-                    <button type="button" class="btn btn-primary">Continuar editando</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+		aria-labelledby="modal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Deseja enviar?</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">Você pode continuar editando seu
+					conteúdo.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Enviar</button>
+					<button type="button" class="btn btn-primary">Continuar
+						editando</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
 
+	<script type="text/javascript" src="../../js/froala_editor.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/align.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/char_counter.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/code_beautifier.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/code_view.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/draggable.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/emoticons.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/entities.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/file.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/font_size.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/font_family.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/fullscreen.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/image.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/image_manager.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/line_breaker.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/inline_style.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/link.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/lists.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/paragraph_format.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/paragraph_style.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/quick_insert.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/quote.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/table.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/save.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/url.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/video.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/help.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/print.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/third_party/spell_checker.min.js"></script>
+	<script type="text/javascript"
+		src="../../js/plugins/special_characters.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/word_paste.min.js"></script>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'));
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-        crossorigin="anonymous"></script>
-    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+	<script
+		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('body').bootstrapMaterialDesign();
+		});
+	</script>
+	<script>
+		$(function() {
+			$('textarea').froalaEditor()
+		});
+	</script>
 </body>
 
 </html>

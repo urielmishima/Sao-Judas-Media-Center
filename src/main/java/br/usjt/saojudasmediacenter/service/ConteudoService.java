@@ -31,5 +31,9 @@ public class ConteudoService {
 		conteudos.sort((Conteudo o1, Conteudo o2) -> o2.getData().compareTo(o1.getData()));
 		return conteudos;
 	}
+
+	public Conteudo save(Conteudo conteudo) {
+		return conteudoRepository.save(conteudo);
+	}
 	
 }

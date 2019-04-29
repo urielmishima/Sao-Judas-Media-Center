@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,9 @@ public class MaterialService {
 		material.setTipo(file.getContentType().split("/")[0]);
 		material.setExtensao(nome.substring(nome.lastIndexOf('.') + 1));
 		return material;
+	}
+
+	public List<Material> findByTipo(String tipo){ 
+		return materialRepository.findByTipo(tipo);
 	}
 }

@@ -10,17 +10,21 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lato"
 	rel="stylesheet">
-<link rel="stylesheet" href="/css/timeline.css">
 <link rel="stylesheet"
 	href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
 <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+
+<link href="/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="/css/timeline.css">
+
 <title>Timeline</title>
 </head>
 
 <body>
 
 	<nav class="navbar navbar-expand-lg sticky-top">
-		<a href="timeline.html" class="navbar-brand"><img
+		<a href="/conteudos/timeline" class="navbar-brand"><img
 			src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
 			style="width: 210px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -62,18 +66,13 @@
 						</div>
 					</div>
 					<hr>
-					<div class="profile-user-menu text-center">
-						<span class="badge badge-success">85 seguidores</span> <span
-							class="badge badge-info">16 likes</span> <span
-							class="badge badge-dark">5 posts</span>
-					</div>
 					<div class="profile-user-buttons">
-						<a href="usuario.html" class="btn btn-outline-success">Informações</a>
+						<a href="/usuarios/editar" class="btn btn-outline-success">Informações</a>
 						<button class="btn btn-danger btn-sm">Sair</button>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8 col-sm-12 col-md-12">
+			<div class="col-lg-8 m-auto col-sm-12 col-md-12">
 				<!--tabs-->
 				<nav>
 					<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -96,19 +95,15 @@
 									th:each="conteudo : ${maisRecentes}">
 									<div class="card mt-4">
 										<div class="card-header">
-											<a class="card-link" href="conteudo.html">
+											<a class="card-link" th:href="@{/conteudos/${conteudo.id}}">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}">Lorem
 													ipsum dolor sit amet, consectetur adip.</h5>
-											</a> <small class="text-muted">Há 1h.</small>
+											</a> <small class="text-muted" th:text="${conteudo.getFormatedData()}">Há 1h.</small>
 										</div>
 										<div class="card-body">
 											<p class="card-text" th:text="${conteudo.descricao}">Curto
 												muito essa música, me faz lembrar dos anos 80!</p>
-											<div class="embed-responsive embed-responsive-16by9">
-												<iframe class="embed-responsive-item"
-													src="https://www.youtube.com/embed/watch?v=9JciBwqKWR4"
-													allowfullscreen></iframe>
-											</div>
+											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
 												<span class="badge badge-primary">Música</span> <span
 													class="badge badge-primary">Cultura</span> <span
@@ -149,138 +144,16 @@
 											<a class="card-link" href="conteudo.html">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}">Lorem
 													ipsum dolor sit amet, consectetur adip.</h5>
-											</a> <small class="text-muted">Há 1h.</small>
+											</a> <small class="text-muted" th:text="${conteudo.getFormatedData()}">Há 1h.</small>
 										</div>
 										<div class="card-body">
 											<p class="card-text" th:text="${conteudo.descricao}">Curto
 												muito essa música, me faz lembrar dos anos 80!</p>
-											<div class="embed-responsive embed-responsive-16by9">
-												<iframe class="embed-responsive-item"
-													src="https://www.youtube.com/embed/watch?v=9JciBwqKWR4"
-													allowfullscreen></iframe>
-											</div>
+											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
 												<span class="badge badge-primary">Música</span> <span
 													class="badge badge-primary">Cultura</span> <span
 													class="badge badge-primary">Vídeos</span>
-											</div>
-										</div>
-										<div class="card-footer">
-											<div class="row">
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i>Like
-													</button>
-												</div>
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">comment</i>Comentar
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-12 col-lg-12">
-									<div class="card mt-4">
-										<div class="card-header">
-											<strong class="d-block text-gray-dark">@username</strong><small
-												class="text-muted">Há 5min.</small>
-										</div>
-										<div class="card-body">
-											<a class="card-link" href="conteudo.html">
-												<h5 class="card-title mb-4">Lorem ipsum dolor sit amet
-													consectetur adipisicing elit. Velit consectetur deserunt
-													illo esse distinctio.</h5>
-											</a> <img class="card-img-top" src="img/cidade.jpg"
-												alt="Card image cap">
-											<div class="post-tags mt-2">
-												<span class="badge badge-primary">Viagem</span> <span
-													class="badge badge-primary">Mundo</span>
-											</div>
-										</div>
-
-										<div class="card-footer">
-											<div class="row">
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i>Like
-													</button>
-												</div>
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">comment</i>Comentar
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-12 col-lg-12">
-									<div class="card mt-4">
-										<div class="card-header">
-											<strong class="d-block text-gray-dark">@username</strong><small
-												class="text-muted">Há 15min.</small>
-										</div>
-										<div class="card-body">
-											<a class="card-link" href="conteudo.html">
-												<h5 class="card-title mb-4">Lorem ipsum dolor sit amet
-													consectetur adipisicing elit. Velit consectetur deserunt
-													illo esse distinctio.</h5>
-											</a>
-											<div class="embed-responsive embed-responsive-16by9">
-												<iframe class="embed-responsive-item"
-													src="https://www.youtube.com/embed/watch?v=9JciBwqKWR4"
-													allowfullscreen></iframe>
-											</div>
-											<div class="post-tags mt-2">
-												<span class="badge badge-primary">Vídeo</span>
-											</div>
-										</div>
-										<div class="card-footer">
-											<div class="row">
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i>Like
-													</button>
-												</div>
-												<div class="col-6">
-													<button type="button" class="btn btn-secondary bmd-btn"
-														style="width: 100%">
-														<i class="material-icons icon">comment</i>Comentar
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-12 col-lg-12">
-									<div class="card mt-4">
-										<div class="card-header">
-											<strong class="d-block text-gray-dark">@username</strong><small
-												class="text-muted">Há 22min.</small>
-										</div>
-										<div class="card-body">
-											<a class="card-link" href="conteudo.html">
-												<h5 class="card-title mb-4">Lorem ipsum dolor sit amet
-													consectetur adipisicing elit. Velit consectetur deserunt
-													illo esse distinctio.</h5>
-											</a>
-											<div class="message my-message">
-												<p class="card-text">Sobre o incêndio na catedral de
-													Notre Dame: Espero que não tenha sido incêndio criminoso.
-													Não gosto de desconfiar das pessoas. Ainda mais na França,
-													um país socialista que tem não-cristãos demais..</p>
-											</div>
-											<div class="post-tags mt-2">
-												<span class="badge badge-primary">Mundo</span> <span
-													class="badge badge-primary">Cultura</span> <span
-													class="badge badge-primary">Religião</span>
 											</div>
 										</div>
 										<div class="card-footer">

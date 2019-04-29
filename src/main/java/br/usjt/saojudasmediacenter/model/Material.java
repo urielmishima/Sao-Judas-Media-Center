@@ -10,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Material {
 
@@ -27,13 +29,16 @@ public class Material {
 	@NotEmpty
 	private String extensao;
 		
+	@JsonIgnoreProperties("materiais")
 	@ManyToMany(mappedBy = "materiais")
 	private List<Conteudo> conteudos;
 	
 	@ManyToMany
+	@JsonIgnoreProperties("materiais")
 	private List<Categoria> categorias;
 	
 	@ManyToMany
+	@JsonIgnoreProperties("materiais")
 	private List<Tag> tags;
 
 	public String getId() {

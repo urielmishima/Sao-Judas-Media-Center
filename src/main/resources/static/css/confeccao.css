@@ -48,6 +48,14 @@ body {
     overflow-y: auto;
 }
 
+.modal-enviar {
+    height: 100px;
+}
+
 .embed-responsive {
     margin: 5px;
+}
+
+.label-upload{
+	color: #555 !important;
 }

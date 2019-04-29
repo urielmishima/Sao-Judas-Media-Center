@@ -1,5 +1,6 @@
 package br.usjt.saojudasmediacenter.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -17,6 +18,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.usjt.saojudasmediacenter.enums.TipoAcesso;
 
@@ -44,23 +48,29 @@ public class Conteudo {
 	private TipoAcesso tipo;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
 	private Calendar data;
 
 	private int visualizacoes;
 
 	@OneToMany(mappedBy = "conteudo")
+	@JsonIgnoreProperties("conteudo")
 	private List<Sugestao> sugestoes;
 	
 	@OneToMany(mappedBy = "conteudo")
+	@JsonIgnoreProperties("conteudo")
 	private List<Feedback> feedbacks;
 	
 	@ManyToMany
+	@JsonIgnoreProperties("conteudos")
 	private List<Material> materiais;
 	
 	@ManyToMany
+	@JsonIgnoreProperties("conteudos")
 	private List<Categoria> categorias;
 	
 	@ManyToMany
+	@JsonIgnoreProperties("conteudos")
 	private List<Tag> tags;
 
 	public String getId() {
@@ -110,6 +120,11 @@ public class Conteudo {
 
 	public Calendar getData() {
 		return data;
+	}
+	
+	public String getFormatedData() {
+		SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return format1.format(this.data.getTime());
 	}
 
 	public Conteudo setData(Calendar data) {

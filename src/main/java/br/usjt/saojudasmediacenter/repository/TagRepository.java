@@ -8,4 +8,6 @@ import br.usjt.saojudasmediacenter.model.Tag;
 @Repository
 public interface TagRepository extends JpaRepository<Tag, String> {
 
+	Tag findByNome(String nome);
+
 }

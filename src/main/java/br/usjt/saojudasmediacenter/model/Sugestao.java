@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Sugestao {
 
@@ -22,9 +24,11 @@ public class Sugestao {
 	private String sugestao;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("sugestoes")
 	private Usuario usuario;
 	
 	@ManyToOne 
+	@JsonIgnoreProperties("sugestoes")
 	private Conteudo conteudo;
 
 	public String getId() {

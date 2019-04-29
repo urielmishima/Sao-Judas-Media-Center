@@ -50,3 +50,7 @@ body {
     opacity: .5;
     background: #cdcdcd;
 }
+
+.label-upload{
+	color: #555 !important;
+}
