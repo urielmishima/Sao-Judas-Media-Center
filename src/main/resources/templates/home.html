@@ -5,19 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link rel="icon" href="img/cropped-favicon-1-32x32.png">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+    <link rel="stylesheet" href="/css/home.css">
     <title>Home</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
-        <a href="home.html" class="navbar-brand mx-auto"><img src="img/logo-mediacenter.png" alt="Logo Media Center"
+        <a href="home.html" class="navbar-brand mx-auto"><img src="/img/logo-mediacenter.png" alt="Logo Media Center"
                 style="width: 210px"></a>
     </nav>
 
@@ -68,7 +66,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-3 col-md-6">
                     <div class="card ">
-                        <div class="card-header">Comentários</div>
+                        <div class="card-header">Recomendações de Tag</div>
                         <div class="card-body">
                             <p class="card-text">22</p>
                             <i class="material-icons icon">comment</i>
@@ -77,10 +75,10 @@
                 </div>
                 <div class="col-sm-12 col-lg-3 col-md-6">
                     <div class="card ">
-                        <div class="card-header">Reações</div>
+                        <div class="card-header">Dislikes</div>
                         <div class="card-body">
                             <p class="card-text">63</p>
-                            <i class="material-icons icon">sentiment_very_satisfied</i>
+                            <i class="material-icons icon">thumb_down</i>
                         </div>
                     </div>
                 </div>
@@ -89,89 +87,68 @@
     </section>
 
     <div class="container-fluid">
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0 update-title">Atualizações recentes</h6>
-            <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Vice de futebol diz que Cruzeiro tem até 15 de maio para pagar dívida por Latorre
-                </p>
-            </div>
-            <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Governo muda de atitude para tentar angariar apoio no Congresso ao projeto de reforma
-                    previdenciária, enquanto tudo fica parado aguardando sinais positivos
-                </p>
-            </div>
-            <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Honda, Yamaha, Suzuki e Kawasaki se unem para desenvolver motos elétricas
-
-                </p>
-            </div>
-            <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Papa reúne membros da Igreja para cúpula sobre escândalos sexuais.
-                    Apesar de sofrer críticas por ser uma medida insuficiente, a instituição é ainda uma das poucas a
-                    reconhecer e tentar combater os crimes sexuais
-                </p>
-            </div>
-            <small class="d-block text-right mt-3">
-                <a href="#">Mostrar todas as atualizações</a>
-            </small>
-        </div>
+        <table class="table table-bordered table-light table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Título da Publicação</th>
+                    <th scope="col">Sugestão de Tags</th>
+                    <th scope="col">Aprovação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong class="text-gray-dark">Mussum</strong></td>
+                    <td>Lorem ipsum</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Tecnologia</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">check</i>
+                        </button>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong class="text-gray-dark">Roberto</strong></td>
+                    <td>Lorem ipsum</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Esportes</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">check</i>
+                        </button>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong class="text-gray-dark">Hamilton</strong></td>
+                    <td>Lorem ipsum</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Cultura</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">check</i>
+                        </button>
+                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="container-fluid">
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0 suggestion-title">Sugestões</h6>
-            <div class="media text-muted pt-3">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Nome Completo</strong>
-                        <a href="#">Seguir</a>
-                    </div>
-                    <span class="d-block">@username</span>
-                </div>
-            </div>
-            <div class="media text-muted pt-3">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Nome Completo</strong>
-                        <a href="#">Seguir</a>
-                    </div>
-                    <span class="d-block">@username</span>
-                </div>
-            </div>
-            <div class="media text-muted pt-3">
-                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong class="text-gray-dark">Nome Completo</strong>
-                        <a href="#">Seguir</a>
-                    </div>
-                    <span class="d-block">@username</span>
-                </div>
-            </div>
-            <small class="d-block text-right mt-3">
-                <a href="#">Todas as sugestões</a>
-            </small>
-        </div>
-    </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
     <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
 </body>
 

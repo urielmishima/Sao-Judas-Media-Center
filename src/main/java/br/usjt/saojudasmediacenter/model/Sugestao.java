@@ -1,6 +1,8 @@
 package br.usjt.saojudasmediacenter.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -11,6 +13,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.usjt.saojudasmediacenter.enums.TipoFeedback;
+
 @Entity
 public class Sugestao {
 
@@ -18,18 +22,31 @@ public class Sugestao {
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String id;
-	
+
 	@Lob
 	@NotEmpty
 	private String sugestao;
 	
+	@Enumerated(EnumType.STRING)
+	private TipoFeedback feedback;
+
 	@ManyToOne
 	@JsonIgnoreProperties("sugestoes")
 	private Usuario usuario;
-	
-	@ManyToOne 
+
+	@ManyToOne
 	@JsonIgnoreProperties("sugestoes")
 	private Conteudo conteudo;
+
+	public Sugestao() {
+
+	}
+
+	public Sugestao(String sugestao, Usuario usuario, Conteudo conteudo) {
+		this.sugestao = sugestao;
+		this.usuario = usuario;
+		this.conteudo = conteudo;
+	}
 
 	public String getId() {
 		return id;
