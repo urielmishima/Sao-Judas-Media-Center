@@ -43,24 +43,21 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg bg-light">
-		<a href="/conteudos/confeccao" class="navbar-brand mx-auto"><img
+		<a href="/" class="navbar-brand mx-auto"><img
 			src="/img/logo-mediacenter.png" alt="Logo Media Center"
 			style="width: 210px;"></a>
 	</nav>
 
 	<!--nav do estagiario-->
 	<div class="bg-light">
-		<nav class="navbar navbar-expand-lg">
-			<div class="container">
-				<a class="nav-link active" href="home.html">Dashboard</a> <a
-					class="nav-link" href="#"> Usuários <span
-					class="badge badge-pill bg-light align-text-bottom">27</span>
-				</a> <a class="nav-link" href="#">Atualizações</a> <a class="nav-link"
-					href="#">Sugestões</a> <a class="nav-link" href="/materiais/upload">Upload</a>
-				<a class="nav-link" href="/conteudos/confeccao">Confecção</a>
-			</div>
-		</nav>
-	</div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="nav-link active" href="/sugestoes/dashboard" th:text="#{sugestoes}"></a>
+                <a class="nav-link" href="/materiais/upload" th:text="#{enviar}"></a>
+                <a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>
+            </div>
+        </nav>
+    </div>
 
 	<form action="/conteudos/confeccao" method="post">
 		<!--card principal-->
@@ -68,23 +65,23 @@
 			<div class="row">
 				<div class="col-sm-12 col-lg-12">
 					<div class="card text-center mt-5">
-						<div class="card-header">Monte seu conteúdo</div>
+						<div class="card-header" th:text="#{monte-conteudo}"></div>
 						<div class="card-body">
 							<div class="form-group">
-								<label class="label-upload" for="titulo">Título</label> <input type="text"
+								<label class="label-upload" for="titulo" th:text="#{titulo}"></label> <input type="text"
 									name="titulo" id="titulo" class="form-control" required
 									autofocus>
 							</div>
 							<div class="form-group">
-								<label class="label-upload" for="descricao">Descrição</label> <input type="text"
+								<label class="label-upload" for="descricao" th:text="#{descricao}"></label> <input type="text"
 									name="descricao" id="descricao" class="form-control">
 							</div>
 							<div class="form-group">
-								<h6>Acesso:</h6>
+								<h6 th:text="#{acesso}"></h6>
 								<div class="radio">
 									<label class="label-upload" th:for="${tipo}" th:each="tipo : ${tipos}"> <input
 										type="radio" name="tipo" th:id="${tipo}" class="form-control"
-										th:value="${tipo}" th:text="${tipo}"> &nbsp &nbsp
+										th:value="${tipo}" th:text="#{${tipo}}"> &nbsp &nbsp
 										&nbsp
 									</label>
 								</div>
@@ -101,13 +98,12 @@
 			<div class="row">
 				<div class="col-sm-12 col-lg-4">
 					<div class="card mt-5">
-						<div class="card-header">Imagem</div>
+						<div class="card-header" th:text="#{imagem}"></div>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-4 col-lg-4 col-md-4"
 									th:each="imagem : ${imagens}">
-									<img th:src="${imagem.getSource()}" th:id="${imagem.id}" alt=""
-										style="width: 100%" class="modal-img">
+									<img th:src="${imagem.getSource()}" th:id="${imagem.id}" style="width: 100%" class="modal-img">
 								</div>
 							</div>
 							<button type="button" data-toggle="modal"
@@ -119,7 +115,7 @@
 				</div>
 				<div class="col-sm-12 col-lg-4">
 					<div class="card mt-5">
-						<div class="card-header">Vídeo</div>
+						<div class="card-header" th:text="#{video}"></div>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-11 embed-responsive embed-responsive-16by9"
@@ -138,7 +134,7 @@
 				</div>
 				<div class="col-sm-12 col-lg-4">
 					<div class="card mt-5">
-						<div class="card-header">Audio</div>
+						<div class="card-header" th:text="#{audio}">Audio</div>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-4 col-lg-4 col-md-4"

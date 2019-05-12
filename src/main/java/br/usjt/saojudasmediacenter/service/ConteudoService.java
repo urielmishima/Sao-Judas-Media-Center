@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.usjt.saojudasmediacenter.enums.TipoAcesso;
 import br.usjt.saojudasmediacenter.model.Conteudo;
+import br.usjt.saojudasmediacenter.model.Tag;
 import br.usjt.saojudasmediacenter.repository.ConteudoRepository;
 
 @Service
@@ -34,6 +35,16 @@ public class ConteudoService {
 
 	public Conteudo save(Conteudo conteudo) {
 		return conteudoRepository.save(conteudo);
+	}
+
+	public void cadastrarTag(Conteudo conteudo) {
+		Conteudo antigo = conteudoRepository.findById(conteudo.getId()).orElse(null);
+		List<Tag> tags = antigo.getTags();
+		Tag sugestao = conteudo.getTags().get(0);
+		if(!tags.contains(sugestao)) {
+			tags.add(sugestao);
+			conteudoRepository.save(antigo);
+		}
 	}
 	
 }

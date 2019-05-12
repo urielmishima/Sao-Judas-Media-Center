@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
     <link rel="stylesheet" href="/css/home.css">
-    <title>Home</title>
+    <title th:text="#{sugestoes}"></title>
 </head>
 
 <body>
@@ -22,15 +22,9 @@
     <div class="bg-light">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="nav-link active" href="#">Dashboard</a>
-                <a class="nav-link" href="#">
-                    Usuários
-                    <span class="badge badge-pill bg-light align-text-bottom">27</span>
-                </a>
-                <a class="nav-link" href="#">Atualizações</a>
-                <a class="nav-link" href="#">Sugestões</a>
-                <a class="nav-link" href="upload.html">Upload</a>
-                <a class="nav-link" href="confeccao.html">Confecção</a>
+                <a class="nav-link active" href="/sugestoes/dashboard" th:text="#{sugestoes}"></a>
+                <a class="nav-link" href="/materiais/upload" th:text="#{enviar}"></a>
+                <a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>
             </div>
         </nav>
     </div>
@@ -38,106 +32,32 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 mt-4 mb-4">
-                <h2 class="text-center title">Detalhes</h2>
+                <h2 class="text-center title" th:text="#{sugestoes}"></h2>
             </div>
         </div>
     </div>
-
-    <section class="cards mb-5 text-center">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <div class="card ">
-                        <div class="card-header">Posts</div>
-                        <div class="card-body">
-                            <p class="card-text">59</p>
-                            <i class="material-icons icon">photo_library</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <div class="card ">
-                        <div class="card-header">Likes</div>
-                        <div class="card-body">
-                            <p class="card-text">13</p>
-                            <i class="material-icons icon">thumb_up</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <div class="card ">
-                        <div class="card-header">Recomendações de Tag</div>
-                        <div class="card-body">
-                            <p class="card-text">22</p>
-                            <i class="material-icons icon">comment</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <div class="card ">
-                        <div class="card-header">Dislikes</div>
-                        <div class="card-body">
-                            <p class="card-text">63</p>
-                            <i class="material-icons icon">thumb_down</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <div class="container-fluid">
         <table class="table table-bordered table-light table-striped text-center">
             <thead>
                 <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Título da Publicação</th>
-                    <th scope="col">Sugestão de Tags</th>
-                    <th scope="col">Aprovação</th>
+                    <th scope="col" th:text="#{usuario}"></th>
+                    <th scope="col" th:text="#{titulo-publicacao}"></th>
+                    <th scope="col" th:text="#{sugestao-tags}"></th>
+                    <th scope="col" th:text="#{aprovacao}"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong class="text-gray-dark">Mussum</strong></td>
-                    <td>Lorem ipsum</td>
+                <tr th:each="sugestao : ${sugestoes}" th:id="${sugestao.id}">
+                    <td><strong class="text-gray-dark" th:text="${sugestao.usuario.usuario}"></strong></td>
+                    <td th:text="${sugestao.conteudo.titulo}"></td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Tecnologia</button>
+                        <button class="btn btn-primary btn-sm" th:text="${sugestao.sugestao}"></button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                        <button type="button" class="btn enviar-feedback-positivo btn-primary bmd-btn-fab bmd-btn-fab-sm">
                             <i class="material-icons">check</i>
                         </button>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
-                            <i class="material-icons">close</i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong class="text-gray-dark">Roberto</strong></td>
-                    <td>Lorem ipsum</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">Esportes</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
-                            <i class="material-icons">check</i>
-                        </button>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
-                            <i class="material-icons">close</i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong class="text-gray-dark">Hamilton</strong></td>
-                    <td>Lorem ipsum</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">Cultura</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
-                            <i class="material-icons">check</i>
-                        </button>
-                        <button type="button" class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                        <button type="button" class="btn enviar-feedback-negativo btn-primary bmd-btn-fab bmd-btn-fab-sm">
                             <i class="material-icons">close</i>
                         </button>
                     </td>
@@ -146,10 +66,28 @@
         </table>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
     <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+	    $('.enviar-feedback-positivo').click(function() {
+			var sugestao = this.parentNode.parentNode;
+			console.log(sugestao.id)
+			$.post(`/sugestoes/positivo/${sugestao.id}`,function(data, status) {
+				sugestao.remove();
+			});
+		});
+		
+		$('.enviar-feedback-negativo').click(function() {
+			var sugestao = this.parentNode.parentNode;
+			$.post(`/sugestoes/negativo/${sugestao.id}`,function(data, status) {
+				sugestao.remove();
+			});
+		});
+	});
+    </script>
 </body>
 
 </html>

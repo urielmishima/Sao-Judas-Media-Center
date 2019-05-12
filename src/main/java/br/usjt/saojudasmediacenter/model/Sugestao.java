@@ -79,4 +79,12 @@ public class Sugestao {
 	public void setConteudo(Conteudo conteudo) {
 		this.conteudo = conteudo;
 	}
+
+	public TipoFeedback getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(TipoFeedback feedback) {
+		this.feedback = feedback;
+	}
 }

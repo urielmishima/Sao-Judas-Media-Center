@@ -44,6 +44,9 @@ public class ConteudoController {
 	@PostMapping("/confeccao")
 	@Secured("ROLE_ESTAGIARIO")
 	public String confeccao(Conteudo conteudo) {
+		
+		System.out.println(Calendar.getInstance());
+		
 		conteudoService.save(conteudo.setData(Calendar.getInstance()));
 		
 		return "redirect:/conteudos/confeccao";

@@ -14,27 +14,21 @@
   	
     <link rel="stylesheet" href="/css/upload.css">
     <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
-    <title>Upload</title>
+    <title th:text="#{enviar}">Upload</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
-        <a href="home.html" class="navbar-brand mx-auto"><img src="/img/logo-mediacenter.png" alt="Logo Media Center"
+        <a href="/" class="navbar-brand mx-auto"><img src="/img/logo-mediacenter.png" alt="Logo Media Center"
                 style="width: 210px"></a>
     </nav>
 
     <div class="bg-light">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="nav-link active" href="home.html">Dashboard</a>
-                <a class="nav-link" href="#">
-                    Usuários
-                    <span class="badge badge-pill bg-light align-text-bottom">27</span>
-                </a>
-                <a class="nav-link" href="#">Atualizações</a>
-                <a class="nav-link" href="#">Sugestões</a>
-                <a class="nav-link" href="/materiais/upload">Upload</a>
-                <a class="nav-link" href="/conteudos/confeccao">Confecção</a>
+                <a class="nav-link active" href="/sugestoes/dashboard" th:text="#{sugestoes}"></a>
+                <a class="nav-link" href="/materiais/upload" th:text="#{enviar}"></a>
+                <a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>
             </div>
         </nav>
     </div>
@@ -44,11 +38,11 @@
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card mt-5">
-                    <div class="card-header text-center">Faça upload de conteúdo</div>
+                    <div class="card-header text-center" th:text="#{enviar-material}"></div>
                     <div class="card-body">
                         <form action="/materiais/upload" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                            	<h6>Tags: </h6>
+                            	<h6 th:text="#{tags}"></h6>
 	                            <div class="tags-carregar row">
 	                            </div>
                             	<div class="ui-widget">
@@ -58,7 +52,7 @@
                             <div class="form-group">
                                 <input type="file" name="file" id="file" class="form-control">
                             </div>
-							<h6>Categorias: </h6>
+							<h6 th:text="#{categorias}"></h6>
                             <div class="row categorias-carregar">                            	
                                 <div class="col-sm-6 col-lg-3 " th:each="categoria : ${categorias}">
                                     <div class="checkbox">
@@ -70,7 +64,7 @@
                             </div>
                             <input type="text" name="adicionar-categorias" class="form-control adicionar-categorias">
                              <br>
-                            <button type="submit" class="btn" data-toggle="snackbar" data-content="Conteúdo enviado com sucesso!" data-html-allowed="true" data-timeout="0">Enviar</button>
+                            <button type="submit" class="btn" data-toggle="snackbar" data-content="Conteúdo enviado com sucesso!" data-html-allowed="true" data-timeout="0" th:text="#{enviar}"></button>
                         </form>
                     </div>
                 </div>

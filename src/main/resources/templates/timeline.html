@@ -24,7 +24,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg sticky-top">
-		<a href="/conteudos/timeline" class="navbar-brand"><img
+		<a href="/" class="navbar-brand"><img
 			src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
 			style="width: 210px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -59,17 +59,16 @@
 					</div>
 					<div class="profile-user-title" th:if="${usuario}">
 						<div class="profile-user-name" th:id="${usuario.id}"
-							th:text="${usuario.usuario}">Convidado</div>
+							th:text="${usuario.usuario}"></div>
 						<div class="profile-user-job">
 							<span class="badge badge-primary profissao-badge"
-								th:text="${usuario.tipo}">UX Designer</span>
+								th:text="#{${usuario.tipo}}"></span>
 						</div>
 					</div>
 					<div class="profile-user-title" th:if="${usuario} == null">
-						<div class="profile-user-name">Convidado</div>
+						<div class="profile-user-name" th:text="#{convidado}"></div>
 						<div class="profile-user-job">
-							<span class="badge badge-primary profissao-badge">Usuario
-								Comum</span>
+							<span class="badge badge-primary profissao-badge" th:text="#{comum}"></span>
 						</div>
 					</div>
 					<hr>
@@ -86,12 +85,12 @@
 					<div class="nav nav-tabs" id="nav-tab" role="tablist">
 						<a href="#recentes" id="nav-recentes-tab"
 							class="nav-item nav-link active" data-toggle="tab"
-							aria-controls="recentes" th:text="#{mais.recentes}"></a> <a
+							aria-controls="recentes" th:text="#{mais-recentes}"></a> <a
 							href="#lidas" id="nav-lidas-tab" class="nav-item nav-link"
-							data-toggle="tab" aria-controls="lidas" th:text="#{mais.lidas}">Mais
-							lidas</a> <a href="#tags" id="nav-tags-tab" class="nav-item nav-link"
+							data-toggle="tab" aria-controls="lidas" th:text="#{mais-lidas}">
+							</a> <a href="#tags" id="nav-tags-tab" class="nav-item nav-link"
 							data-toggle="tab" aria-controls="nav-tags"
-							th:text="#{busca.por.tag}">Busca por tag</a>
+							th:text="#{busca-por-tag}"></a>
 					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
@@ -106,35 +105,33 @@
 										<div class="card-header">
 											<a class="card-link"
 												th:href="@{/conteudos/} + ${conteudo.id}">
-												<h5 class="card-title mb-4" th:text="${conteudo.titulo}">Lorem
-													ipsum dolor sit amet, consectetur adip.</h5>
+												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
 											</a> <small class="text-muted"
-												th:text="${conteudo.getFormatedData()}">Há 1h.</small>
+												th:text="${conteudo.getFormatedData()}"></small>
 										</div>
 										<div class="card-body">
-											<p class="card-text" th:text="${conteudo.descricao}">Curto
-												muito essa música, me faz lembrar dos anos 80!</p>
+											<p class="card-text" th:text="${conteudo.descricao}"></p>
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
-												<span class="badge badge-primary">Música</span> <span
-													class="badge badge-primary">Cultura</span> <span
-													class="badge badge-primary">Vídeos</span>
+												<th:block th:each="tag : ${conteudo.tags}">												
+													<span th:text="${tag.nome}" class="badge badge-primary"></span>
+												</th:block>
 											</div>
 										</div>
-										<div class="card-footer">
+										<div class="card-footer" th:if="${usuario}">
 											<div class="row">
-												<div class="col-4">
+												<div class="col-4 feedback-positivo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i>
+														<i class="material-icons icon">thumb_up</i><th:block th:text="#{gostei}"></th:block>
 													</button>
 												</div>
-												<div class="col-4">
+												<div class="col-4 feedback-negativo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_down</i>
+														<i class="material-icons icon">thumb_down</i><th:block th:text="#{nao-gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-4">
@@ -165,35 +162,33 @@
 										<div class="card-header">
 											<a class="card-link"
 												th:href="@{/conteudos/} + ${conteudo.id}">
-												<h5 class="card-title mb-4" th:text="${conteudo.titulo}">Lorem
-													ipsum dolor sit amet, consectetur adip.</h5>
+												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
 											</a> <small class="text-muted"
-												th:text="${conteudo.getFormatedData()}">Há 1h.</small>
+												th:text="${conteudo.getFormatedData()}"></small>
 										</div>
 										<div class="card-body">
-											<p class="card-text" th:text="${conteudo.descricao}">Curto
-												muito essa música, me faz lembrar dos anos 80!</p>
+											<p class="card-text" th:text="${conteudo.descricao}"></p>
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
-												<span class="badge badge-primary">Música</span> <span
-													class="badge badge-primary">Cultura</span> <span
-													class="badge badge-primary">Vídeos</span>
+												<th:block th:each="tag : ${conteudo.tags}">												
+													<span th:text="${tag.nome}" class="badge badge-primary"></span>
+												</th:block>
 											</div>
 										</div>
-										<div class="card-footer">
+										<div class="card-footer"  th:if="${usuario}">
 											<div class="row">
-												<div class="col-4">
+												<div class="col-4 feedback-positivo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i>
+														<i class="material-icons icon">thumb_up</i><th:block th:text="#{gostei}"></th:block>
 													</button>
 												</div>
-												<div class="col-4">
+												<div class="col-4 feedback-negativo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_down</i>
+														<i class="material-icons icon">thumb_down</i><th:block th:text="#{nao-gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-4">
@@ -201,7 +196,8 @@
 														class="atribuirConteudo btn btn-secondary bmd-btn"
 														style="width: 100%" data-toggle="modal"
 														data-target="#tag-modal">
-														<i class="material-icons icon">comment</i>Comentar
+														<i class="material-icons icon">comment</i>
+														<th:block th:text="#{sugerir-tag}"></th:block>
 													</button>
 												</div>
 											</div>
@@ -265,7 +261,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Sugerir Tags</h5>
+					<h5 class="modal-title" id="exampleModalLabel" th:text="#{sugerir-tag}"></h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -274,14 +270,14 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="sugestao">Digite as tags</label> <input type="text"
+							<label for="sugestao" th:text="#{digite-tags}"></label> <input type="text"
 								name="sugestao" id="sugestao" class="form-control">
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Fechar</button>
+						data-dismiss="modal" th:text="#{fechar}">Fechar</button>
 					<button type="button" class="btn btn-primary enviar-sugestao">Enviar</button>
 				</div>
 			</div>
@@ -293,10 +289,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
-	<script
-		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js">
-		
-	</script>
+	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('body').bootstrapMaterialDesign();
@@ -306,6 +299,7 @@
 		$(document).ready(function() {
 			var conteudo;
 			var usuario = $('.profile-user-name').get(0).id;
+			console.log("Id do usuario Logado: " + usuario);
 			$('#locales').change(function() {
 				var selectedOption = $('#locales').val();
 				if (selectedOption != '') {
@@ -327,14 +321,40 @@
 			});
 			
 			$('.enviar-feedback-positivo').click(function() {
-				$.post(`/feedback/positivo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
-
+				var botao = this;
+				var botaoContrario = $(this).parent().parent().children('.feedback-negativo').children();
+				$.post(`/feedbacks/positivo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
+					console.log("Id do botão clicado : " + botao.id);
+					$(botao).children('.icon').css("color", "#353c86")
+					botaoContrario.children('.icon').css("color", "#6c757d")
 				});
 			});
 			
 			$('.enviar-feedback-negativo').click(function() {
-				$.post(`/feedback/negativo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
-
+				var botao = this;
+				var botaoContrario = $(this).parent().parent().children('.feedback-positivo').children();
+				$.post(`/feedbacks/negativo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
+					console.log("Id do botão clicado : " + botao.id);
+					$(botao).children('.icon').css("color", "#353c86");
+					botaoContrario.children('.icon').css("color", "#6c757d")
+				});
+			});
+			$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
+				console.log("Entrou no histórico de feedbacks positivos")
+				var feedbacks = data;
+				$('.enviar-feedback-positivo').each(function(index){
+					if(feedbacks.includes(this.id)){
+						$(this).children('.icon').css("color", "#353c86");
+					}
+				});
+			});
+			$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
+				console.log("Entrou no histórico de feedbacks negativos")
+				var feedbacks = data;
+				$('.enviar-feedback-negativo').each(function(index){
+					if(feedbacks.includes(this.id)){
+						$(this).children('.icon').css("color", "#353c86");
+					}
 				});
 			});
 		});

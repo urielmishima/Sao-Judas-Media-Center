@@ -76,7 +76,7 @@ public class Init implements CommandLineRunner {
 					for (Tag tag : tags) {
 						Calendar data = Calendar.getInstance();
 						data.setTimeInMillis(
-								(long) (System.currentTimeMillis() - 432000000 + Math.random() * 864000000));
+								(long) (System.currentTimeMillis() - 432000000 + Math.random() * 432000000));
 
 						conteudo = new Conteudo()
 								.setTitulo(categoria.getNome() + " " + tag.getNome() + " " + acessos.get(i))
