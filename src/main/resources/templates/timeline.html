@@ -32,15 +32,23 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<th:block></th:block>
-		<select class="p-1" style="border-radius: 5px;" id="locales">
-			<option value="" th:text="#{lang.esc}"></option>
-			<option value="en" th:text="#{lang.eng}"></option>
-			<option value="pt" th:text="#{lang.pt}"></option>
-			<option value="es" th:text="#{lang.es}"></option>
-		</select>
 		<div class="collapse navbar-collapse" id="navbar">
 			<form class="form-inline my-2  ml-auto my-lg-0">
+				<th:block th:if="${usuario}">
+	                <a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="Dashboard"></a>
+	                <a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="Dashboard"></a>
+				</th:block>
+				<div class="dropdown">
+                    <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons" style="vertical-align: middle;">language</i>
+                    </button>
+                    <div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en">Inglês</a>
+                        <a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
+                        <a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt">Português</a>
+                    </div>
+                </div>
 				<input class="form-control mr-sm-2" type="search"
 					th:placeholder="#{pesquisar}" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
@@ -68,13 +76,13 @@
 					<div class="profile-user-title" th:if="${usuario} == null">
 						<div class="profile-user-name" th:text="#{convidado}"></div>
 						<div class="profile-user-job">
-							<span class="badge badge-primary profissao-badge" th:text="#{comum}"></span>
+							<span class="badge badge-primary profissao-badge" th:text="#{COMUM}"></span>
 						</div>
 					</div>
 					<hr>
 					<div class="profile-user-buttons">
-						<a href="/usuarios/editar" class="btn btn-outline-success"
-							th:text="#{informacoes}"></a> <a href="/logout"><button
+						<a th:if="${usuario} == null" href="/usuarios/login" class="btn btn-outline-success"
+							th:text="login"></a> <a th:if="${usuario}" href="/logout"><button
 								class="btn btn-danger btn-sm" th:text="#{sair}"></button></a>
 					</div>
 				</div>
@@ -175,7 +183,7 @@
 												</th:block>
 											</div>
 										</div>
-										<div class="card-footer"  th:if="${usuario}">
+										<div class="card-footer" th:if="${usuario}">
 											<div class="row">
 												<div class="col-4 feedback-positivo">
 													<button type="button" th:id="${conteudo.id}"
@@ -339,24 +347,26 @@
 					botaoContrario.children('.icon').css("color", "#6c757d")
 				});
 			});
-			$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
-				console.log("Entrou no histórico de feedbacks positivos")
-				var feedbacks = data;
-				$('.enviar-feedback-positivo').each(function(index){
-					if(feedbacks.includes(this.id)){
-						$(this).children('.icon').css("color", "#353c86");
-					}
+			if(usuario.length > 0){
+				$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
+					console.log("Entrou no histórico de feedbacks positivos")
+					var feedbacks = data;
+					$('.enviar-feedback-positivo').each(function(index){
+						if(feedbacks.includes(this.id)){
+							$(this).children('.icon').css("color", "#353c86");
+						}
+					});
 				});
-			});
-			$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
-				console.log("Entrou no histórico de feedbacks negativos")
-				var feedbacks = data;
-				$('.enviar-feedback-negativo').each(function(index){
-					if(feedbacks.includes(this.id)){
-						$(this).children('.icon').css("color", "#353c86");
-					}
+				$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
+					console.log("Entrou no histórico de feedbacks negativos")
+					var feedbacks = data;
+					$('.enviar-feedback-negativo').each(function(index){
+						if(feedbacks.includes(this.id)){
+							$(this).children('.icon').css("color", "#353c86");
+						}
+					});
 				});
-			});
+			}
 		});
 	</script>
 </body>

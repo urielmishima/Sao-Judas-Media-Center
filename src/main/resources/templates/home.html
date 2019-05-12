@@ -24,7 +24,19 @@
             <div class="container">
                 <a class="nav-link active" href="/sugestoes/dashboard" th:text="#{sugestoes}"></a>
                 <a class="nav-link" href="/materiais/upload" th:text="#{enviar}"></a>
-                <a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>
+                <a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>                
+                <a class="nav-link" href="/conteudos/timeline" th:text="timeline"></a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons" style="vertical-align: middle;">language</i>
+                    </button>
+                    <div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en">Inglês</a>
+                        <a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
+                        <a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt">Português</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
