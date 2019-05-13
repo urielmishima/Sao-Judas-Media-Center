@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/materialize/css/materialize.css">
         <link rel="stylesheet" href="/css/cadastro.css">
         <link rel="icon" href="/img/cropped-favicon-1-32x32.png" sizes="32x32">
-        <title>Cadastro</title>
+        <title th:text="#{cadastrar}"></title>
     </head>
 
     <body>
@@ -25,13 +25,13 @@
                             <form class="form" method="post" action="/usuarios/cadastrar">
 
                                 <div class="form-field">
-                                    <label for="usuario">Usuario</label>
-                                    <input type="text" name="usuario" id="usuario" required placeholder="Informe seu usuario">
+                                	<label for="username" th:text="#{usuario}"></label>
+                                    <input type="text" name="usuario" id="usuario" required>
                                 </div>
                                 
                                 <div class="form-field">
-                                    <label for="senha">Senha</label>
-                                    <input type="password" name="senha" id="senha" required placeholder="Informe sua senha">
+                                    <label for="password" th:text="#{senha}"></label>
+                                    <input type="password" name="senha" id="senha" required>
                                 </div>
 
                                 <br>
@@ -39,7 +39,7 @@
                                 <br>
 
                                 <div class="form-field">
-                                    <button type="submit" class="waves-effect waves-light btn-large pink lighten-2" style="width: 100%">Cadastrar</button>
+                                    <button type="submit" class="waves-effect waves-light btn-large pink lighten-2" style="width: 100%" th:text="#{cadastrar}"></button>
                                 </div>
                             </form>
                         </div>

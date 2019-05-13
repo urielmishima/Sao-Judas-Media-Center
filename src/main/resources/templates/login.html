@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/materialize/css/materialize.css">
         <link rel="stylesheet" href="/css/login.css">
         <link rel="icon" href="/img/cropped-favicon-1-32x32.png" sizes="32x32">
-        <title>Login</title>
+        <title th:text="#{login}"></title>
     </head>
 
     <body>
@@ -24,21 +24,21 @@
                         <div class="card-content">
                             <form class="form" method="post" action="/usuarios/login">
                                 <div class="form-field">
-                                    <label for="username">Usuario</label>
-                                    <input type="text" id="username" name="username" autofocus required placeholder="Informe seu usuario">
+                                    <label for="username" th:text="#{usuario}"></label>
+                                    <input type="text" id="username" name="username" autofocus required>
                                 </div>
 
                                 <div class="form-field">
-                                    <label for="password">Senha</label>
-                                    <input type="password" id="password" name="password" required placeholder="Informe sua senha">
+                                    <label for="password" th:text="#{senha}"></label>
+                                    <input type="password" id="password" name="password" required>
                                 </div>
 
                                 <br>
 
-                                <p class="lead">Não possui cadastro? <a href="/usuarios/cadastrar">Cadastre-se.</a></p>
+                                <p class="lead"> <a href="/usuarios/cadastrar" th:text="#{cadastrar}"></a></p>
 
                                 <div class="form-field">
-                                    <button type="submit" class="waves-effect waves-light btn-large pink lighten-2" style="width: 100%">Logar</button>
+                                    <button type="submit" class="waves-effect waves-light btn-large pink lighten-2" style="width: 100%" th:text="#{login}"></button>
                                 </div>
                             </form>
                         </div>
