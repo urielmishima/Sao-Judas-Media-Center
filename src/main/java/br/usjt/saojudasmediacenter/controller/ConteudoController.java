@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.usjt.saojudasmediacenter.enums.TipoAcesso;
 import br.usjt.saojudasmediacenter.model.Conteudo;
 import br.usjt.saojudasmediacenter.model.Usuario;
+import br.usjt.saojudasmediacenter.service.CategoriaService;
 import br.usjt.saojudasmediacenter.service.ConteudoService;
 import br.usjt.saojudasmediacenter.service.MaterialService;
 import br.usjt.saojudasmediacenter.service.UsuarioService;
@@ -25,9 +26,10 @@ import br.usjt.saojudasmediacenter.service.UsuarioService;
 @RequestMapping("/conteudos")
 public class ConteudoController {
 
-	@Autowired ConteudoService conteudoService;
-	@Autowired UsuarioService usuarioService;
-	@Autowired MaterialService materialService;
+	@Autowired private ConteudoService conteudoService;
+	@Autowired private UsuarioService usuarioService;
+	@Autowired private MaterialService materialService;
+	@Autowired private CategoriaService categoriaService;
 	
 	@GetMapping("/confeccao")
 	@Secured("ROLE_ESTAGIARIO")
@@ -54,7 +56,7 @@ public class ConteudoController {
 	
 	@GetMapping("/timeline")
 	public ModelAndView home(@Nullable Principal principal) {
-		final int numeroConteudos = 15;
+		final int numeroConteudos = 50;
 		
 		ModelAndView mav = new ModelAndView("timeline");	
 		
@@ -67,17 +69,12 @@ public class ConteudoController {
 			conteudos = conteudoService.findByTipo(TipoAcesso.PUBLICO);
 		}
 		
-		mav.addObject("maisLidas", conteudoService.maisLidas(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
+		mav.addObject("maisPositivas", conteudoService.maisPositivas(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
 		mav.addObject("maisRecentes", conteudoService.maisRecentes(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
-		System.out.println(mav.getModel().containsKey("maisVisualizadas"));
+		mav.addObject("categorias", categoriaService.findAll());
 		
 		return mav;
 	}
 	
-	@GetMapping("/live") 
-	public ModelAndView live() {
-		ModelAndView mav = new ModelAndView();
-		
-		return mav;
-	}
+	
 }

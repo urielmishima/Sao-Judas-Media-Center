@@ -24,11 +24,11 @@ public class Categoria {
 	private String nome;
 	
 	@ManyToMany(mappedBy = "categorias")
-	@JsonIgnoreProperties("conteudos")
+	@JsonIgnoreProperties("categorias")
 	private List<Conteudo> conteudos;
 	
 	@ManyToMany(mappedBy = "categorias")
-	@JsonIgnoreProperties("conteudos")
+	@JsonIgnoreProperties("categorias")
 	private List<Material> materiais;
 	
 	public String getId() {

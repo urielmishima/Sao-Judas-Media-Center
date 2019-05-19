@@ -23,8 +23,8 @@ public class ConteudoService {
 		return conteudoRepository.findByTipo(tipo);
 	}
 
-	public List<Conteudo> maisLidas(List<Conteudo> conteudos) {
-		conteudos.sort((Conteudo o1, Conteudo o2) -> o2.getVisualizacoes() - o1.getVisualizacoes());
+	public List<Conteudo> maisPositivas(List<Conteudo> conteudos) {
+		conteudos.sort((Conteudo o1, Conteudo o2) -> o2.getPontuacaoFeedback() - o1.getPontuacaoFeedback());
 		return conteudos;
 	}
 

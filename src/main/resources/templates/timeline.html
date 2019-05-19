@@ -15,6 +15,24 @@
 <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
 
 <link href="/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../css/froala_editor.css">
+<link rel="stylesheet" href="../../css/froala_style.css">
+<link rel="stylesheet" href="../../css/plugins/code_view.css">
+<link rel="stylesheet" href="../../css/plugins/draggable.css">
+<link rel="stylesheet" href="../../css/plugins/colors.css">
+<link rel="stylesheet" href="../../css/plugins/emoticons.css">
+<link rel="stylesheet" href="../../css/plugins/image_manager.css">
+<link rel="stylesheet" href="../../css/plugins/image.css">
+<link rel="stylesheet" href="../../css/plugins/line_breaker.css">
+<link rel="stylesheet" href="../../css/plugins/table.css">
+<link rel="stylesheet" href="../../css/plugins/char_counter.css">
+<link rel="stylesheet" href="../../css/plugins/video.css">
+<link rel="stylesheet" href="../../css/plugins/fullscreen.css">
+<link rel="stylesheet" href="../../css/plugins/file.css">
+<link rel="stylesheet" href="../../css/plugins/quick_insert.css">
+<link rel="stylesheet" href="../../css/plugins/help.css">
+<link rel="stylesheet" href="../../css/third_party/spell_checker.css">
+<link rel="stylesheet" href="../../css/plugins/special_characters.css">
 
 <link rel="stylesheet" href="/css/timeline.css">
 
@@ -33,7 +51,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbar">
-			<form class="form-inline my-2  ml-auto my-lg-0">
+			<div class="form-inline ml-auto my-2 my-lg-0">
 				<th:block th:if="${usuario}">
 	                <a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
 	                <a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
@@ -51,11 +69,13 @@
                     </div>
                 </div>
                 &nbsp
-				<input class="form-control mr-sm-2" type="search"
-					th:placeholder="#{pesquisar}" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
-					th:text="#{pesquisar}"></button>
-			</form>
+				<form method="get" action="/tags/conteudo">
+					<input class="form-control mr-sm-2" type="search"
+						th:placeholder="#{pesquisar}" name="tagsParam" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+						th:text="#{pesquisar}"></button>
+				</form>
+			</div>
 		</div>
 	</nav>
 
@@ -97,10 +117,10 @@
 							class="nav-item nav-link active" data-toggle="tab"
 							aria-controls="recentes" th:text="#{mais-recentes}"></a> <a
 							href="#lidas" id="nav-lidas-tab" class="nav-item nav-link"
-							data-toggle="tab" aria-controls="lidas" th:text="#{mais-lidas}">
+							data-toggle="tab" aria-controls="lidas" th:text="#{melhores}">
 							</a> <a href="#tags" id="nav-tags-tab" class="nav-item nav-link"
 							data-toggle="tab" aria-controls="nav-tags"
-							th:text="#{busca-por-tag}"></a>
+							th:text="#{busca-por-categoria}"></a>
 					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
@@ -167,7 +187,7 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-12 col-lg-12"
-									th:each="conteudo : ${maisLidas}">
+									th:each="conteudo : ${maisPositivas}">
 									<div class="card mt-4">
 										<div class="card-header">
 											<a class="card-link"
@@ -221,43 +241,13 @@
 					<!--Busca por tags-->
 					<div class="tab-pane fade" id="tags" role="tabpanel"
 						aria-labelledby="nav-tags-tab">
-						<button type="button" class="btn btn-primary">
-							Esportes <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Cultura <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Tecnologia <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Música <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Estudo <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Saúde <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Streams <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Jogos <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Política <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Religião <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Finanças <span aria-hidden="true">&times;</span>
-						</button>
-						<button type="button" class="btn btn-primary">
-							Psicologia <span aria-hidden="true">&times;</span>
-						</button>
-
+						<div class="container">
+						<th:block th:each="categoria : ${categorias}">
+							<button type="button" class="buscaCategoria btn btn-lg btn-primary" th:id="${categoria.id}" th:text="${categoria.nome}"></button>
+						</th:block>
+						</div>
+						<div id="resultadoCategoria" class="container">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -304,11 +294,12 @@
 		$(document).ready(function() {
 			$('body').bootstrapMaterialDesign();
 		});
-	</script>
+	</script>	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var conteudo;
 			var usuario = $('.profile-user-name').get(0).id;
+			var tags = '[[${tagsParam}]]'
 			console.log("Id do usuario Logado: " + usuario);
 			$('#locales').change(function() {
 				var selectedOption = $('#locales').val();
@@ -316,34 +307,38 @@
 					window.location.replace('timeline?lang=' + selectedOption);
 				}
 			});
-	
-			$('.atribuirConteudo').click(function() {
+
+			$(document).on('click', '.atribuirConteudo', function() {
 				console.log("Entrou no click do atribuirConteudo. Conteudo atual: " + conteudo);
 				conteudo = this.id;
 				console.log("Como o conteudo está apoós a tranformação do click do atribuirConteudo: "+ conteudo);
 			});
 	
-			$('.enviar-sugestao').click(function() {
+			$(document).on('click', '.enviar-sugestao', function() {
 				var sugestao = $('#sugestao').val();
 				$.post(`/sugestoes?usuario=${usuario}&sugestao=${sugestao}&conteudo=${conteudo}`,function(data, status) {
 					$('#tag-modal').modal('hide')
 				});
 			});
 			
-			$('.enviar-feedback-positivo').click(function() {
+			$(document).on('click', '.enviar-feedback-positivo', function() {
 				var botao = this;
+				var idBotao = this.id;
 				var botaoContrario = $(this).parent().parent().children('.feedback-negativo').children();
-				$.post(`/feedbacks/positivo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
+				console.log(`/feedbacks/positivo?usuario=${usuario}&conteudo=${idBotao}`)
+				$.post(`/feedbacks/positivo?usuario=${usuario}&conteudo=${idBotao}`,function(data, status) {
 					console.log("Id do botão clicado : " + botao.id);
 					$(botao).children('.icon').css("color", "#353c86")
 					botaoContrario.children('.icon').css("color", "#6c757d")
 				});
 			});
 			
-			$('.enviar-feedback-negativo').click(function() {
+			$(document).on('click', '.enviar-feedback-negativo', function() {
 				var botao = this;
+				var idBotao = this.id;
 				var botaoContrario = $(this).parent().parent().children('.feedback-positivo').children();
-				$.post(`/feedbacks/negativo?usuario=${usuario}&conteudo=${conteudo}`,function(data, status) {
+				console.log(`/feedbacks/negativo?usuario=${usuario}&conteudo=${idBotao}`)
+				$.post(`/feedbacks/negativo?usuario=${usuario}&conteudo=${idBotao}`,function(data, status) {
 					console.log("Id do botão clicado : " + botao.id);
 					$(botao).children('.icon').css("color", "#353c86");
 					botaoContrario.children('.icon').css("color", "#6c757d")
@@ -369,6 +364,69 @@
 					});
 				});
 			}
+
+			$('.buscaCategoria').click(function(){
+				id = this.id;
+				$.get(`/categorias/conteudo/${id}/?tagsParam=${tags}`,function(data, status) {
+					var template = `<div class="row">
+						<div class="col-sm-12 col-lg-12">`;
+						for(x in data){
+							var caraDaVez = data[x];
+							console.log(caraDaVez)
+							
+							var htmlDaVez =	`<div class="card mt-4">
+											<div class="card-header">
+												<a class="card-link" href="#">
+													<h5 class="card-title mb-4">${caraDaVez.titulo}</h5>
+												</a> <small class="text-muted">${caraDaVez.data}</small>
+											</div>
+											<div class="card-body">
+												<p class="card-text">${caraDaVez.descricao}</p>
+												<div class="content fr-view">${caraDaVez.conteudo}</div>
+												<div class="post-tags mt-2">`;
+												
+													for(z in caraDaVez.tags) {
+														tagDaVez = caraDaVez.tags[z];
+														htmlDaVez = htmlDaVez.concat(`<span class="badge badge-primary">${tagDaVez.nome}</span>`);
+													}
+												
+							htmlDaVez = htmlDaVez.concat(`</div></div>`);
+							if(usuario.length > 0){
+							htmlDaVez = htmlDaVez.concat(`<div class="card-footer">
+												<div class="row">
+													<div class="col-4 feedback-positivo">
+														<button type="button" id="`+ caraDaVez.id + `"
+															class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
+															style="width: 100%">
+															<i class="material-icons icon">thumb_up</i>[[#{gostei}]]
+														</button>
+													</div>
+													<div class="col-4 feedback-negativo">
+														<button type="button" id="`+ caraDaVez.id + `"
+															class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
+															style="width: 100%">
+															<i class="material-icons icon">thumb_down</i>[[#{nao-gostei}]]
+														</button>
+													</div>
+													<div class="col-4">
+														<button id="`+ caraDaVez.id + `" type="button"
+															class="atribuirConteudo btn btn-secondary bmd-btn"
+															style="width: 100%" data-toggle="modal"
+															data-target="#tag-modal">
+															<i class="material-icons icon">comment</i>
+															[[#{sugerir-tag}]]
+														</button>
+													</div>
+												</div>
+											</div>`);
+							}
+							template = template.concat(htmlDaVez + `</div>`);
+						}
+						template = template.concat(`</div></div>`);
+					console.log(template)	
+					document.getElementById("resultadoCategoria").innerHTML = template
+				});
+			});
 		});
 	</script>
 </body>

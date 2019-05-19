@@ -22,16 +22,20 @@ public class FeedbackController {
 
 	@PostMapping("/positivo")
 	public String positivo(Feedback feedback) {
+		System.out.println(feedback.getConteudo().getId());
 		feedback = feedbackService.getFeedbackByUsuarioAndConteudo(feedback);
 		feedback.setFeedback(TipoFeedback.POSITIVO);
+		System.out.println(feedback.getConteudo().getId());
 		feedbackService.save(feedback);
 		return "timeline";
 	}
 	
 	@PostMapping("/negativo")
 	public String negativo(Feedback feedback) {
+		System.out.println(feedback.getConteudo().getId());
 		feedback = feedbackService.getFeedbackByUsuarioAndConteudo(feedback);
 		feedback.setFeedback(TipoFeedback.NEGATIVO);
+		System.out.println(feedback.getConteudo().getId());
 		feedbackService.save(feedback);
 		return "timeline";
 	}
@@ -51,6 +55,7 @@ public class FeedbackController {
 		for (Feedback feedback : feedbackService.findByUsuarioAndFeedback(usuario, tipo)) {
 			ids.add(feedback.getConteudo().getId());
 		};
+		
 		return ids;
 	}
 	

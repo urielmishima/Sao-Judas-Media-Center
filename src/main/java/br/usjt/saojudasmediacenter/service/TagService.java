@@ -29,5 +29,9 @@ public class TagService {
 		}
 		return tag;
 	}
+
+	public List<Tag> findByNomeIn(List<String> tags) {
+		return tagRepository.findByNomeIn(tags);
+	}
 	
 }

@@ -1,6 +1,7 @@
 package br.usjt.saojudasmediacenter.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.usjt.saojudasmediacenter.enums.TipoAcesso;
+import br.usjt.saojudasmediacenter.enums.TipoFeedback;
 
 @Entity
 public class Conteudo {
@@ -182,5 +184,14 @@ public class Conteudo {
 	public Conteudo setVisualizacoes(int visualizacoes) {
 		this.visualizacoes = visualizacoes;
 		return this;
+	}
+	
+	public Integer getPontuacaoFeedback() {
+		List<Feedback> positivos = new ArrayList<>(this.getFeedbacks());
+		List<Feedback> negativos = new ArrayList<>(this.getFeedbacks());
+		positivos.removeIf((feedback) -> feedback.getFeedback().toString().equals(TipoFeedback.NEGATIVO.toString()));
+		negativos.removeIf((feedback) -> feedback.getFeedback().toString().equals(TipoFeedback.POSITIVO.toString()));
+		
+		return positivos.size() - negativos.size();
 	}
 }

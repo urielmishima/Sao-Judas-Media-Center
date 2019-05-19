@@ -29,5 +29,9 @@ public class CategoriaService {
 		}
 		return categoria;
 	}
+
+	public Categoria findById(String id) {
+		return categoriaRepository.findById(id).orElse(null);
+	}
 	
 }
