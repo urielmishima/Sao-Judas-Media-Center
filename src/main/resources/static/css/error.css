@@ -1,0 +1,18 @@
+.warning-icon {
+    width: 250px;
+}
+
+.error-title {
+    color: white;
+    font-family: 'Graviola', sans-serif;
+}
+
+@font-face {
+    font-family: Graviola;
+    src: url(../fonts/graviola-soft-medium.otf);
+}
+
+
+* {
+    font-family: 'Lato', sans-serif;
+}

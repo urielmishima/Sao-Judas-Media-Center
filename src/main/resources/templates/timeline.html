@@ -133,14 +133,14 @@
 									th:each="conteudo : ${maisRecentes}">
 									<div class="card mt-4">
 										<div class="card-header">
-											<a class="card-link"
-												th:href="@{/conteudos/} + ${conteudo.id}">
+											<a class="card-link" href="#">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
-											</a> <small class="text-muted"
+											</a> 
+											<p class="card-text" th:text="${conteudo.descricao}"></p>
+											<small class="text-muted"
 												th:text="${conteudo.getFormatedData()}"></small>
 										</div>
 										<div class="card-body">
-											<p class="card-text" th:text="${conteudo.descricao}"></p>
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
 												<th:block th:each="tag : ${conteudo.tags}">												
@@ -150,21 +150,21 @@
 										</div>
 										<div class="card-footer" th:if="${usuario}">
 											<div class="row">
-												<div class="col-4 feedback-positivo">
+												<div class="col-sm-6 col-md-4 feedback-positivo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
 														style="width: 100%">
 														<i class="material-icons icon">thumb_up</i><th:block th:text="#{gostei}"></th:block>
 													</button>
 												</div>
-												<div class="col-4 feedback-negativo">
+												<div class="col-sm-6 col-md-4 feedback-negativo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
 														style="width: 100%">
 														<i class="material-icons icon">thumb_down</i><th:block th:text="#{nao-gostei}"></th:block>
 													</button>
 												</div>
-												<div class="col-4">
+												<div class="col-sm-6 col-md-4">
 													<button th:id="${conteudo.id}" type="button"
 														class="atribuirConteudo btn btn-secondary bmd-btn"
 														style="width: 100%" data-toggle="modal"
@@ -190,14 +190,14 @@
 									th:each="conteudo : ${maisPositivas}">
 									<div class="card mt-4">
 										<div class="card-header">
-											<a class="card-link"
-												th:href="@{/conteudos/} + ${conteudo.id}">
+											<a class="card-link" href="#">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
-											</a> <small class="text-muted"
-												th:text="${conteudo.getFormatedData()}"></small>
+											</a>									
+											<p class="card-text" th:text="${conteudo.descricao}"></p>
+											<small class="text-muted"
+												th:text="${conteudo.getFormatedData()}"></small>			
 										</div>
 										<div class="card-body">
-											<p class="card-text" th:text="${conteudo.descricao}"></p>
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
 												<th:block th:each="tag : ${conteudo.tags}">												
@@ -344,26 +344,29 @@
 					botaoContrario.children('.icon').css("color", "#6c757d")
 				});
 			});
-			if(usuario.length > 0){
-				$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
-					console.log("Entrou no histórico de feedbacks positivos")
-					var feedbacks = data;
-					$('.enviar-feedback-positivo').each(function(index){
-						if(feedbacks.includes(this.id)){
-							$(this).children('.icon').css("color", "#353c86");
-						}
+			function getLikeAndDeslike(){
+				if(usuario.length > 0){
+					$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
+						console.log("Entrou no histórico de feedbacks positivos")
+						var feedbacks = data;
+						$('.enviar-feedback-positivo').each(function(index){
+							if(feedbacks.includes(this.id)){
+								$(this).children('.icon').css("color", "#353c86");
+							}
+						});
 					});
-				});
-				$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
-					console.log("Entrou no histórico de feedbacks negativos")
-					var feedbacks = data;
-					$('.enviar-feedback-negativo').each(function(index){
-						if(feedbacks.includes(this.id)){
-							$(this).children('.icon').css("color", "#353c86");
-						}
+					$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
+						console.log("Entrou no histórico de feedbacks negativos")
+						var feedbacks = data;
+						$('.enviar-feedback-negativo').each(function(index){
+							if(feedbacks.includes(this.id)){
+								$(this).children('.icon').css("color", "#353c86");
+							}
+						});
 					});
-				});
+				}				
 			}
+			getLikeAndDeslike();
 
 			$('.buscaCategoria').click(function(){
 				id = this.id;
@@ -378,10 +381,11 @@
 											<div class="card-header">
 												<a class="card-link" href="#">
 													<h5 class="card-title mb-4">${caraDaVez.titulo}</h5>
-												</a> <small class="text-muted">${caraDaVez.data}</small>
+												</a>
+												<p class="card-text">${caraDaVez.descricao}</p>
+												<small class="text-muted">${caraDaVez.data}</small>
 											</div>
 											<div class="card-body">
-												<p class="card-text">${caraDaVez.descricao}</p>
 												<div class="content fr-view">${caraDaVez.conteudo}</div>
 												<div class="post-tags mt-2">`;
 												
@@ -424,7 +428,8 @@
 						}
 						template = template.concat(`</div></div>`);
 					console.log(template)	
-					document.getElementById("resultadoCategoria").innerHTML = template
+					document.getElementById("resultadoCategoria").innerHTML = template;
+					getLikeAndDeslike();
 				});
 			});
 		});
