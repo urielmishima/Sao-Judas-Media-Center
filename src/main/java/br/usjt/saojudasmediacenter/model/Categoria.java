@@ -27,10 +27,6 @@ public class Categoria {
 	@JsonIgnoreProperties("categorias")
 	private List<Conteudo> conteudos;
 	
-	@ManyToMany(mappedBy = "categorias")
-	@JsonIgnoreProperties("categorias")
-	private List<Material> materiais;
-	
 	public String getId() {
 		return id;
 	}
@@ -55,12 +51,4 @@ public class Categoria {
 	public void setConteudos(List<Conteudo> conteudos) {
 		this.conteudos = conteudos;
 	}
-
-	public List<Material> getMateriais() {
-		return materiais;
-	}
-
-	public void setMateriais(List<Material> materiais) {
-		this.materiais = materiais;
-	}	
 }

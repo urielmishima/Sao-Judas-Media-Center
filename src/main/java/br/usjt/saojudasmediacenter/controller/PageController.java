@@ -22,5 +22,4 @@ public class PageController implements ErrorController{
 	public String getErrorPath() {
 		return "/error";
 	}
-
 }

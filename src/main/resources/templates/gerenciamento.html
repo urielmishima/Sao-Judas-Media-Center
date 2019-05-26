@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+    <link rel="stylesheet" href="/css/gerenciamento.css">
+    <title th:text="#{gerenciamento}"></title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <a href="/" class="navbar-brand mx-auto"><img src="/img/logo-mediacenter.png" alt="Logo Media Center"
+                style="width: 210px"></a>
+    </nav>
+
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+            	<a class="nav-link active" href="/sugestoes/dashboard" th:text="#{sugestoes}"></a>
+				<a class="nav-link" href="/conteudos/confeccao" th:text="#{confeccao}"></a>
+				<a class="nav-link" href="/conteudos/timeline" th:text="timeline"></a>
+                <a class="nav-link" href="/usuarios/gerenciar" th:if="${usuario.tipo.toString()} == ADMINISTRADOR" th:text="#{usuarios}">Usuários</a>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons" style="vertical-align: middle;">language</i>
+                    </button>
+                    <div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en"></a>
+						<a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
+						<a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt"></a>
+					</div>
+                </div>
+              </div>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2 th:text="#{gerenciamento} + ' ' + #{de} + ' ' + #{usuario}"></h2>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th th:text="#{usuario}"></th>
+                        <th th:text="#{cargo}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario, i : ${usuarios}">
+                        <td th:text="${i.index + 1}"></td>
+                        <td th:text="${usuario.usuario}"></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{${usuario.tipo}}">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                	<th:block th:each="tipo : ${tipos}">
+                                    	<a class="dropdown-item" th:href="@{/usuarios/gerenciar/} + ${usuario.id} + @{/} + ${tipo}" th:text="#{${tipo}}"></a>
+                                	</th:block>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+        <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+
+</html>

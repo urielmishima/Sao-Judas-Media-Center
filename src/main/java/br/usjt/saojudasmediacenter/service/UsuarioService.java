@@ -38,7 +38,16 @@ public class UsuarioService implements UserDetailsService{
 		return new User(usuarioAutenticado.getUsuario(), usuarioAutenticado.getSenha(), authorityList);
 	}
 
-	public Object findByUsuario(Usuario usuario) {
+	public Usuario findByUsuario(Usuario usuario) {
 		return usuarioRepository.findByUsuario(usuario.getUsuario());
+	}
+
+	public List<Usuario> findAll() {
+		return usuarioRepository.findAll();
+	}
+
+	public Usuario atualizarTipo(String idUsuario, TipoUsuario tipoUsuario) {
+		return usuarioRepository.save(usuarioRepository.findById(idUsuario).orElse(null).setTipo(tipoUsuario));
+		
 	}
 }

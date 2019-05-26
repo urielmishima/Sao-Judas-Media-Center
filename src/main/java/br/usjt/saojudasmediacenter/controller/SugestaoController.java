@@ -1,8 +1,10 @@
 package br.usjt.saojudasmediacenter.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,11 @@ import br.usjt.saojudasmediacenter.enums.TipoFeedback;
 import br.usjt.saojudasmediacenter.model.Conteudo;
 import br.usjt.saojudasmediacenter.model.Sugestao;
 import br.usjt.saojudasmediacenter.model.Tag;
+import br.usjt.saojudasmediacenter.model.Usuario;
 import br.usjt.saojudasmediacenter.service.ConteudoService;
 import br.usjt.saojudasmediacenter.service.SugestaoService;
 import br.usjt.saojudasmediacenter.service.TagService;
+import br.usjt.saojudasmediacenter.service.UsuarioService;
 
 @Controller
 @RequestMapping("/sugestoes")
@@ -26,6 +30,7 @@ public class SugestaoController {
 	@Autowired private SugestaoService sugestaoService;
 	@Autowired private ConteudoService conteudoService;
 	@Autowired private TagService tagService;
+	@Autowired private UsuarioService usuarioService;
 	
 	@PostMapping
 	public String sugestao(Sugestao sugestao) {
@@ -60,9 +65,10 @@ public class SugestaoController {
 	
 	@GetMapping("/dashboard")
 	@Secured("ROLE_ESTAGIARIO")
-	public ModelAndView dashboard() {
+	public ModelAndView dashboard(@Nullable Principal principal) {
 		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("sugestoes", sugestaoService.findByFeedbackIsNull());
+		mav.addObject("usuario", usuarioService.findByUsuario(new Usuario().setUsuario(principal.getName())));
 		return mav;
 	}
 }

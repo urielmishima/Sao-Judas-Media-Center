@@ -19,7 +19,6 @@ import br.usjt.saojudasmediacenter.model.Conteudo;
 import br.usjt.saojudasmediacenter.model.Usuario;
 import br.usjt.saojudasmediacenter.service.CategoriaService;
 import br.usjt.saojudasmediacenter.service.ConteudoService;
-import br.usjt.saojudasmediacenter.service.MaterialService;
 import br.usjt.saojudasmediacenter.service.UsuarioService;
 
 @Controller
@@ -28,18 +27,15 @@ public class ConteudoController {
 
 	@Autowired private ConteudoService conteudoService;
 	@Autowired private UsuarioService usuarioService;
-	@Autowired private MaterialService materialService;
 	@Autowired private CategoriaService categoriaService;
 	
 	@GetMapping("/confeccao")
 	@Secured("ROLE_ESTAGIARIO")
-	public ModelAndView confeccao() {
+	public ModelAndView confeccao(@Nullable Principal principal) {
 		ModelAndView mav = new ModelAndView("confeccao");
-		mav.addObject("imagens", materialService.findByTipo("image"));
-		mav.addObject("videos", materialService.findByTipo("video"));
-		mav.addObject("audios", materialService.findByTipo("audio"));
-		mav.addObject("textos", materialService.findByTipo("text"));
 		mav.addObject("tipos", TipoAcesso.values());
+		mav.addObject("categorias", categoriaService.findAll());
+		mav.addObject("usuario", usuarioService.findByUsuario(new Usuario().setUsuario(principal.getName())));
 		return mav;
 	}
 	
@@ -69,8 +65,16 @@ public class ConteudoController {
 			conteudos = conteudoService.findByTipo(TipoAcesso.PUBLICO);
 		}
 		
-		mav.addObject("maisPositivas", conteudoService.maisPositivas(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
-		mav.addObject("maisRecentes", conteudoService.maisRecentes(new ArrayList<Conteudo>(conteudos)).subList(0, numeroConteudos));
+		List<Conteudo> maisPositivas = conteudoService.maisPositivas(new ArrayList<Conteudo>(conteudos));
+		List<Conteudo> maisRecentes = conteudoService.maisRecentes(new ArrayList<Conteudo>(conteudos));
+		if(conteudos.size() >= numeroConteudos) {
+			maisPositivas = maisPositivas.subList(0, numeroConteudos);
+			maisRecentes = maisRecentes.subList(0, numeroConteudos);
+		}
+		
+		mav.addObject("maisPositivas", maisPositivas);
+		mav.addObject("maisRecentes", maisRecentes);
+		
 		mav.addObject("categorias", categoriaService.findAll());
 		
 		return mav;

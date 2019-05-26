@@ -23,10 +23,6 @@ public class Tag {
 	
 	@JsonIgnoreProperties("tags")
 	@ManyToMany(mappedBy = "tags")
-	private List<Material> materiais;
-	
-	@JsonIgnoreProperties("tags")
-	@ManyToMany(mappedBy = "tags")
 	private List<Conteudo> conteudos;
 
 	public String getId() {
@@ -44,14 +40,6 @@ public class Tag {
 	public Tag setNome(String nome) {
 		this.nome = nome;
 		return this;
-	}
-
-	public List<Material> getMateriais() {
-		return materiais;
-	}
-
-	public void setMateriais(List<Material> materiais) {
-		this.materiais = materiais;
 	}
 
 	public List<Conteudo> getConteudos() {

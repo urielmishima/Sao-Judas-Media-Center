@@ -2,79 +2,69 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
-<link rel="icon" href="/img/cropped-favicon-1-32x32.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+	<link rel="icon" href="/img/cropped-favicon-1-32x32.png">
 
-<link href="/css/froala_style.min.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="../../css/froala_editor.css">
-<link rel="stylesheet" href="../../css/froala_style.css">
-<link rel="stylesheet" href="../../css/plugins/code_view.css">
-<link rel="stylesheet" href="../../css/plugins/draggable.css">
-<link rel="stylesheet" href="../../css/plugins/colors.css">
-<link rel="stylesheet" href="../../css/plugins/emoticons.css">
-<link rel="stylesheet" href="../../css/plugins/image_manager.css">
-<link rel="stylesheet" href="../../css/plugins/image.css">
-<link rel="stylesheet" href="../../css/plugins/line_breaker.css">
-<link rel="stylesheet" href="../../css/plugins/table.css">
-<link rel="stylesheet" href="../../css/plugins/char_counter.css">
-<link rel="stylesheet" href="../../css/plugins/video.css">
-<link rel="stylesheet" href="../../css/plugins/fullscreen.css">
-<link rel="stylesheet" href="../../css/plugins/file.css">
-<link rel="stylesheet" href="../../css/plugins/quick_insert.css">
-<link rel="stylesheet" href="../../css/plugins/help.css">
-<link rel="stylesheet" href="../../css/third_party/spell_checker.css">
-<link rel="stylesheet" href="../../css/plugins/special_characters.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/froala_editor.css">
+	<link rel="stylesheet" href="/css/froala_style.css">
+	<link rel="stylesheet" href="/css/plugins/code_view.css">
+	<link rel="stylesheet" href="/css/plugins/draggable.css">
+	<link rel="stylesheet" href="/css/plugins/colors.css">
+	<link rel="stylesheet" href="/css/plugins/emoticons.css">
+	<link rel="stylesheet" href="/css/plugins/image_manager.css">
+	<link rel="stylesheet" href="/css/plugins/image.css">
+	<link rel="stylesheet" href="/css/plugins/line_breaker.css">
+	<link rel="stylesheet" href="/css/plugins/table.css">
+	<link rel="stylesheet" href="/css/plugins/char_counter.css">
+	<link rel="stylesheet" href="/css/plugins/video.css">
+	<link rel="stylesheet" href="/css/plugins/fullscreen.css">
+	<link rel="stylesheet" href="/css/plugins/file.css">
+	<link rel="stylesheet" href="/css/plugins/quick_insert.css">
+	<link rel="stylesheet" href="/css/plugins/help.css">
+	<link rel="stylesheet" href="/css/third_party/spell_checker.css">
+	<link rel="stylesheet" href="/css/plugins/special_characters.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 
-<link rel="stylesheet" href="/css/timeline.css">
+	<link rel="stylesheet" href="/css/timeline.css">
 
-<title>Timeline</title>
+	<title>Timeline</title>
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg sticky-top">
-		<a href="/" class="navbar-brand"><img
-			src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
-			style="width: 210px"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbar" aria-controls="navbarNavAltMarkup"
-			aria-expanded="false" aria-label="Toggle navigation">
+		<a href="/" class="navbar-brand"><img src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
+				style="width: 210px"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbar">
 			<div class="form-inline ml-auto my-2 my-lg-0">
 				<th:block th:if="${usuario}">
-	                <a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
-	                <a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link btn-outline-success" href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
+					<a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link btn-outline-success"
+						href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
+					<a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link btn-outline-success"
+						href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
 				</th:block>
 				&nbsp
-				<div class="dropdown">
-                    <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons" style="vertical-align: middle;">language</i>
-                    </button>
-                    <div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en"></a>
-                        <a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
-                        <a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt"></a>
-                    </div>
-                </div>
-                &nbsp
-				<form method="get" action="/tags/conteudo">
-					<input class="form-control mr-sm-2" type="search"
-						th:placeholder="#{pesquisar}" name="tagsParam" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
-						th:text="#{pesquisar}"></button>
-				</form>
+				<div class="dropdown mr-5">
+					<button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="material-icons" style="vertical-align: middle;">language</i>
+					</button>
+					<div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en"></a>
+						<a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
+						<a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt"></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -84,15 +74,12 @@
 			<div class="col-md-2">
 				<div class="profile-sidebar">
 					<div class="profile-user-pic">
-						<img src="/img/avatar-372-456324.png" alt="Usuário"
-							class="img-responsive img-circle img-user">
+						<img src="/img/avatar-372-456324.png" alt="Usuário" class="img-responsive img-circle img-user">
 					</div>
 					<div class="profile-user-title" th:if="${usuario}">
-						<div class="profile-user-name" th:id="${usuario.id}"
-							th:text="${usuario.usuario}"></div>
+						<div class="profile-user-name" th:id="${usuario.id}" th:text="${usuario.usuario}"></div>
 						<div class="profile-user-job">
-							<span class="badge badge-primary profissao-badge"
-								th:text="#{${usuario.tipo}}"></span>
+							<span class="badge badge-primary profissao-badge" th:text="#{${usuario.tipo}}"></span>
 						</div>
 					</div>
 					<div class="profile-user-title" th:if="${usuario} == null">
@@ -101,11 +88,32 @@
 							<span class="badge badge-primary profissao-badge" th:text="#{COMUM}"></span>
 						</div>
 					</div>
-					<hr>
 					<div class="profile-user-buttons">
 						<a th:if="${usuario} == null" href="/usuarios/login" class="btn btn-outline-success"
 							th:text="#{login}"></a> <a th:if="${usuario}" href="/logout"><button
 								class="btn btn-danger btn-sm" th:text="#{sair}"></button></a>
+					</div>
+					<hr>
+					<div class="search">
+						<form method="get" action="/tags/conteudo" class="form-inline">
+							<div class="form-group tag-search">
+								<label for="tagsParam" th:text="#{pesquisar}"></label>
+								<input type="text" name="tagsParam" id="tagsParam" class="form-control">
+							</div>
+							<button type="submit" class="btn btn-outline-primary mt-4" th:text="#{pesquisar}"></button>
+						</form>
+						<div class="categorias">
+							<span class="badge badge-info text-uppercase mb-2" th:text="#{busca-por-categoria}"></span>
+							<div class="row" th:each="categoria : ${categorias}">
+								<a class="m-auto" th:href="@{/categorias/conteudo/} + ${categoria.id}">
+									<button type="button" class="m-auto buscaCategoria btn btn-primary"
+									th:id="${categoria.id}">
+										<th:block th:text="${categoria.nome}"></th:block>
+										<span class="badge badge-primary badge-categoria" th:text="${categoria.conteudos.size()}"></span>
+									</button>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -113,37 +121,31 @@
 				<!--tabs-->
 				<nav>
 					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-						<a href="#recentes" id="nav-recentes-tab"
-							class="nav-item nav-link active" data-toggle="tab"
-							aria-controls="recentes" th:text="#{mais-recentes}"></a> <a
-							href="#lidas" id="nav-lidas-tab" class="nav-item nav-link"
-							data-toggle="tab" aria-controls="lidas" th:text="#{melhores}">
-							</a> <a href="#tags" id="nav-tags-tab" class="nav-item nav-link"
-							data-toggle="tab" aria-controls="nav-tags"
-							th:text="#{busca-por-categoria}"></a>
+						<a href="#recentes" id="nav-recentes-tab" class="nav-item nav-link active" data-toggle="tab"
+							aria-controls="recentes" th:text="#{mais-recentes}"></a> <a href="#lidas" id="nav-lidas-tab"
+							class="nav-item nav-link" data-toggle="tab" aria-controls="lidas" th:text="#{melhores}">
+						</a>
 					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
 					<!--Mais recentes-->
-					<div class="tab-pane fade show active" id="recentes"
-						role="tabpanel" aria-labelledby="nav-recentes-tab">
+					<div class="tab-pane fade show active" id="recentes" role="tabpanel"
+						aria-labelledby="nav-recentes-tab">
 						<div class="container">
 							<div class="row">
-								<div class="col-sm-12 col-lg-12"
-									th:each="conteudo : ${maisRecentes}">
+								<div class="col-sm-12 col-lg-12" th:each="conteudo : ${maisRecentes}">
 									<div class="card mt-4">
 										<div class="card-header">
 											<a class="card-link" href="#">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
-											</a> 
+											</a>
 											<p class="card-text" th:text="${conteudo.descricao}"></p>
-											<small class="text-muted"
-												th:text="${conteudo.getFormatedData()}"></small>
+											<small class="text-muted" th:text="${conteudo.getFormatedData()}"></small>
 										</div>
 										<div class="card-body">
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
-												<th:block th:each="tag : ${conteudo.tags}">												
+												<th:block th:each="tag : ${conteudo.tags}">
 													<span th:text="${tag.nome}" class="badge badge-primary"></span>
 												</th:block>
 											</div>
@@ -154,14 +156,16 @@
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i><th:block th:text="#{gostei}"></th:block>
+														<i class="material-icons icon">thumb_up</i>
+														<th:block th:text="#{gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-sm-6 col-md-4 feedback-negativo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_down</i><th:block th:text="#{nao-gostei}"></th:block>
+														<i class="material-icons icon">thumb_down</i>
+														<th:block th:text="#{nao-gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-sm-6 col-md-4">
@@ -182,25 +186,22 @@
 					</div>
 
 					<!--Mais lidas-->
-					<div class="tab-pane fade" id="lidas" role="tabpanel"
-						aria-labelledby="nav-lidas-tab">
+					<div class="tab-pane fade" id="lidas" role="tabpanel" aria-labelledby="nav-lidas-tab">
 						<div class="container">
 							<div class="row">
-								<div class="col-sm-12 col-lg-12"
-									th:each="conteudo : ${maisPositivas}">
+								<div class="col-sm-12 col-lg-12" th:each="conteudo : ${maisPositivas}">
 									<div class="card mt-4">
 										<div class="card-header">
 											<a class="card-link" href="#">
 												<h5 class="card-title mb-4" th:text="${conteudo.titulo}"></h5>
-											</a>									
+											</a>
 											<p class="card-text" th:text="${conteudo.descricao}"></p>
-											<small class="text-muted"
-												th:text="${conteudo.getFormatedData()}"></small>			
+											<small class="text-muted" th:text="${conteudo.getFormatedData()}"></small>
 										</div>
 										<div class="card-body">
 											<div class="content fr-view" th:utext="${conteudo.conteudo}"></div>
 											<div class="post-tags mt-2">
-												<th:block th:each="tag : ${conteudo.tags}">												
+												<th:block th:each="tag : ${conteudo.tags}">
 													<span th:text="${tag.nome}" class="badge badge-primary"></span>
 												</th:block>
 											</div>
@@ -211,14 +212,16 @@
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_up</i><th:block th:text="#{gostei}"></th:block>
+														<i class="material-icons icon">thumb_up</i>
+														<th:block th:text="#{gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-4 feedback-negativo">
 													<button type="button" th:id="${conteudo.id}"
 														class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
 														style="width: 100%">
-														<i class="material-icons icon">thumb_down</i><th:block th:text="#{nao-gostei}"></th:block>
+														<i class="material-icons icon">thumb_down</i>
+														<th:block th:text="#{nao-gostei}"></th:block>
 													</button>
 												</div>
 												<div class="col-4">
@@ -237,18 +240,6 @@
 							</div>
 						</div>
 					</div>
-
-					<!--Busca por tags-->
-					<div class="tab-pane fade" id="tags" role="tabpanel"
-						aria-labelledby="nav-tags-tab">
-						<div class="container">
-						<th:block th:each="categoria : ${categorias}">
-							<button type="button" class="buscaCategoria btn btn-lg btn-primary" th:id="${categoria.id}" th:text="${categoria.nome}"></button>
-						</th:block>
-						</div>
-						<div id="resultadoCategoria" class="container">
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -256,29 +247,27 @@
 
 	</div>
 
-	<div class="modal fade" id="tag-modal" tabindex="-1" role="dialog"
-		aria-labelledby="tag-modal" aria-hidden="true">
+	<div class="modal fade" id="tag-modal" tabindex="-1" role="dialog" aria-labelledby="tag-modal" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel" th:text="#{sugerir-tag}"></h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="sugestao" th:text="#{digite-tags}"></label> <input type="text"
-								name="sugestao" id="sugestao" class="form-control">
+							<label for="sugestao" th:text="#{digite-tags}"></label> <input type="text" name="sugestao"
+								id="sugestao" class="form-control">
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal" th:text="#{fechar}">Fechar</button>
-					<button type="button" class="btn btn-primary enviar-sugestao">Enviar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"
+						th:text="#{fechar}"></button>
+					<button type="button" class="btn btn-primary enviar-sugestao" th:text="#{enviar}"></button>
 				</div>
 			</div>
 		</div>
@@ -286,153 +275,54 @@
 
 
 
-
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+	<script type="text/javascript" src="/js/froala_editor.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/align.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/char_counter.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/code_beautifier.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/code_view.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/colors.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/draggable.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/emoticons.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/entities.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/file.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/font_size.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/font_family.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/fullscreen.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/image.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/image_manager.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/line_breaker.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/inline_style.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/link.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/lists.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/paragraph_format.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/paragraph_style.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/quick_insert.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/quote.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/table.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/save.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/url.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/video.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/help.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/print.min.js"></script>
+	<script type="text/javascript" src="/js/third_party/spell_checker.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/special_characters.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/word_paste.min.js"></script>
+
 	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
 	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			$('body').bootstrapMaterialDesign();
 		});
-	</script>	
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var conteudo;
-			var usuario = $('.profile-user-name').get(0).id;
-			var tags = '[[${tagsParam}]]'
-			console.log("Id do usuario Logado: " + usuario);
-			$('#locales').change(function() {
-				var selectedOption = $('#locales').val();
-				if (selectedOption != '') {
-					window.location.replace('timeline?lang=' + selectedOption);
-				}
-			});
-
-			$(document).on('click', '.atribuirConteudo', function() {
-				console.log("Entrou no click do atribuirConteudo. Conteudo atual: " + conteudo);
-				conteudo = this.id;
-				console.log("Como o conteudo está apoós a tranformação do click do atribuirConteudo: "+ conteudo);
-			});
-	
-			$(document).on('click', '.enviar-sugestao', function() {
-				var sugestao = $('#sugestao').val();
-				$.post(`/sugestoes?usuario=${usuario}&sugestao=${sugestao}&conteudo=${conteudo}`,function(data, status) {
-					$('#tag-modal').modal('hide')
-				});
-			});
-			
-			$(document).on('click', '.enviar-feedback-positivo', function() {
-				var botao = this;
-				var idBotao = this.id;
-				var botaoContrario = $(this).parent().parent().children('.feedback-negativo').children();
-				console.log(`/feedbacks/positivo?usuario=${usuario}&conteudo=${idBotao}`)
-				$.post(`/feedbacks/positivo?usuario=${usuario}&conteudo=${idBotao}`,function(data, status) {
-					console.log("Id do botão clicado : " + botao.id);
-					$(botao).children('.icon').css("color", "#353c86")
-					botaoContrario.children('.icon').css("color", "#6c757d")
-				});
-			});
-			
-			$(document).on('click', '.enviar-feedback-negativo', function() {
-				var botao = this;
-				var idBotao = this.id;
-				var botaoContrario = $(this).parent().parent().children('.feedback-positivo').children();
-				console.log(`/feedbacks/negativo?usuario=${usuario}&conteudo=${idBotao}`)
-				$.post(`/feedbacks/negativo?usuario=${usuario}&conteudo=${idBotao}`,function(data, status) {
-					console.log("Id do botão clicado : " + botao.id);
-					$(botao).children('.icon').css("color", "#353c86");
-					botaoContrario.children('.icon').css("color", "#6c757d")
-				});
-			});
-			function getLikeAndDeslike(){
-				if(usuario.length > 0){
-					$.get(`/feedbacks/positivo/usuario/?usuario=${usuario}`,function(data, status) {
-						console.log("Entrou no histórico de feedbacks positivos")
-						var feedbacks = data;
-						$('.enviar-feedback-positivo').each(function(index){
-							if(feedbacks.includes(this.id)){
-								$(this).children('.icon').css("color", "#353c86");
-							}
-						});
-					});
-					$.get(`/feedbacks/negativo/usuario/?usuario=${usuario}`,function(data, status) {
-						console.log("Entrou no histórico de feedbacks negativos")
-						var feedbacks = data;
-						$('.enviar-feedback-negativo').each(function(index){
-							if(feedbacks.includes(this.id)){
-								$(this).children('.icon').css("color", "#353c86");
-							}
-						});
-					});
-				}				
-			}
-			getLikeAndDeslike();
-
-			$('.buscaCategoria').click(function(){
-				id = this.id;
-				$.get(`/categorias/conteudo/${id}/?tagsParam=${tags}`,function(data, status) {
-					var template = `<div class="row">
-						<div class="col-sm-12 col-lg-12">`;
-						for(x in data){
-							var caraDaVez = data[x];
-							console.log(caraDaVez)
-							
-							var htmlDaVez =	`<div class="card mt-4">
-											<div class="card-header">
-												<a class="card-link" href="#">
-													<h5 class="card-title mb-4">${caraDaVez.titulo}</h5>
-												</a>
-												<p class="card-text">${caraDaVez.descricao}</p>
-												<small class="text-muted">${caraDaVez.data}</small>
-											</div>
-											<div class="card-body">
-												<div class="content fr-view">${caraDaVez.conteudo}</div>
-												<div class="post-tags mt-2">`;
-												
-													for(z in caraDaVez.tags) {
-														tagDaVez = caraDaVez.tags[z];
-														htmlDaVez = htmlDaVez.concat(`<span class="badge badge-primary">${tagDaVez.nome}</span>`);
-													}
-												
-							htmlDaVez = htmlDaVez.concat(`</div></div>`);
-							if(usuario.length > 0){
-							htmlDaVez = htmlDaVez.concat(`<div class="card-footer">
-												<div class="row">
-													<div class="col-4 feedback-positivo">
-														<button type="button" id="`+ caraDaVez.id + `"
-															class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
-															style="width: 100%">
-															<i class="material-icons icon">thumb_up</i>[[#{gostei}]]
-														</button>
-													</div>
-													<div class="col-4 feedback-negativo">
-														<button type="button" id="`+ caraDaVez.id + `"
-															class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
-															style="width: 100%">
-															<i class="material-icons icon">thumb_down</i>[[#{nao-gostei}]]
-														</button>
-													</div>
-													<div class="col-4">
-														<button id="`+ caraDaVez.id + `" type="button"
-															class="atribuirConteudo btn btn-secondary bmd-btn"
-															style="width: 100%" data-toggle="modal"
-															data-target="#tag-modal">
-															<i class="material-icons icon">comment</i>
-															[[#{sugerir-tag}]]
-														</button>
-													</div>
-												</div>
-											</div>`);
-							}
-							template = template.concat(htmlDaVez + `</div>`);
-						}
-						template = template.concat(`</div></div>`);
-					console.log(template)	
-					document.getElementById("resultadoCategoria").innerHTML = template;
-					getLikeAndDeslike();
-				});
-			});
-		});
 	</script>
+	<script type="text/javascript" src="/js/timeline.js"></script>
 </body>
+
 </html>

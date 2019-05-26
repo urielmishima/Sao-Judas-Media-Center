@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
     <link rel="icon" href="img/cropped-favicon-1-32x32.png">
-    <link rel="stylesheet" href="css/error.css">
-    <title>Erro</title>
+    <link rel="stylesheet" href="/css/error.css">
+    <title th:text="#{erro} + '!'"></title>
 </head>
 
 <body style="background-color:#353c86">
@@ -19,25 +17,22 @@
 
     <div class="container m-auto">
         <div class="row justify-content-center mt-5">
-            <a href="timeline.html" class="navbar-brand"><img src="img/logo-mediacenter-bgwhite.png"
+            <a href="timeline.html" class="navbar-brand"><img src="/img/logo-mediacenter-bgwhite.png"
                     alt="Logo Media Center" style="width:250px"></a>
         </div>
         <div class="row justify-content-center">
             <div class="img-warning mt-5">
-                <img src="img/Error-80_icon-icons.com_57326.png" class="warning-icon" alt="Error">
+                <img src="/img/Error-80_icon-icons.com_57326.png" class="warning-icon" alt="Error">
             </div>
         </div>
 
         <div class="row justify-content-center">
-            <h1 class="error-title">Erro 404!</h1>
-        </div>
-        <div class="row justify-content-center">
-            <h4 class="error-title">Página não encontrada</h4>
+            <h1 class="error-title" th:text="#{erro} + '!'"></h1>
         </div>
         
         <div class="row justify-content-center">
             <div class="col-md-3 mt-5">
-                <a href="/" class="btn btn-outline-success" style="width:100%">Ir para home</a>
+                <a href="/" class="btn btn-outline-success" style="width:100%" th:text="#{ir-para-home}"></a>
             </div>
         </div>
     </div>

@@ -63,10 +63,6 @@ public class Conteudo {
 	
 	@ManyToMany
 	@JsonIgnoreProperties("conteudos")
-	private List<Material> materiais;
-	
-	@ManyToMany
-	@JsonIgnoreProperties("conteudos")
 	private List<Categoria> categorias;
 	
 	@ManyToMany
@@ -129,15 +125,6 @@ public class Conteudo {
 
 	public Conteudo setData(Calendar data) {
 		this.data = data;
-		return this;
-	}
-
-	public List<Material> getMateriais() {
-		return materiais;
-	}
-
-	public Conteudo setMateriais(List<Material> materiais) {
-		this.materiais = materiais;
 		return this;
 	}
 
