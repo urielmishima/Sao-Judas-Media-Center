@@ -1,9 +1,13 @@
 $(document).ready(function () {
+    $('form').keypress(function (e) {
+        if ((e.keyCode == 10) || (e.keyCode == 13)) {
+            e.preventDefault();
+        }
+    });
     var conteudo;
     var usuario = $('.profile-user-name').get(0).id;
     var tags = '[[${tagsParam}]]'
     console.log("Id do usuario Logado: " + usuario);
-
     $(document).on('click', '.atribuirConteudo', function () {
         console.log("Entrou no click do atribuirConteudo. Conteudo atual: " + conteudo);
         conteudo = this.id;
@@ -12,7 +16,8 @@ $(document).ready(function () {
 
     $(document).on('click', '.enviar-sugestao', function () {
         var sugestao = $('#sugestao').val();
-        $.post(`/sugestoes?usuario=${usuario}&sugestao=${sugestao}&conteudo=${conteudo}`, function (data, status) {
+        $('#sugestao').val("");
+        $.post(`/sugestoes?usuario=${usuario}&sugestaoTxt=${sugestao}&conteudo=${conteudo}`, function (data, status) {
             $('#tag-modal').modal('hide')
         });
     });
@@ -64,68 +69,68 @@ $(document).ready(function () {
     }
     getLikeAndDeslike();
 
-    $('.buscaCategoria').click(function () {
-        id = this.id;
-        $.get(`/categorias/conteudo/${id}/?tagsParam=${tags}`, function (data, status) {
-            var template = `<div class="row">
-                <div class="col-sm-12 col-lg-12">`;
-            for (x in data) {
-                var caraDaVez = data[x];
-                console.log(caraDaVez)
+    // $('.buscaCategoria').click(function () {
+    //     id = this.id;
+    //     $.get(`/categorias/conteudo/${id}/?tagsParam=${tags}`, function (data, status) {
+    //         var template = `<div class="row">
+    //             <div class="col-sm-12 col-lg-12">`;
+    //         for (x in data) {
+    //             var caraDaVez = data[x];
+    //             console.log(caraDaVez)
 
-                var htmlDaVez = `<div class="card mt-4">
-                                    <div class="card-header">
-                                        <a class="card-link" href="#">
-                                            <h5 class="card-title mb-4">${caraDaVez.titulo}</h5>
-                                        </a>
-                                        <p class="card-text">${caraDaVez.descricao}</p>
-                                        <small class="text-muted">${caraDaVez.data}</small>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="content fr-view">${caraDaVez.conteudo}</div>
-                                        <div class="post-tags mt-2">`;
+    //             var htmlDaVez = `<div class="card mt-4">
+    //                                 <div class="card-header">
+    //                                     <a class="card-link" href="#">
+    //                                         <h5 class="card-title mb-4">${caraDaVez.titulo}</h5>
+    //                                     </a>
+    //                                     <p class="card-text">${caraDaVez.descricao}</p>
+    //                                     <small class="text-muted">${caraDaVez.data}</small>
+    //                                 </div>
+    //                                 <div class="card-body">
+    //                                     <div class="content fr-view">${caraDaVez.conteudo}</div>
+    //                                     <div class="post-tags mt-2">`;
 
-                for (z in caraDaVez.tags) {
-                    tagDaVez = caraDaVez.tags[z];
-                    htmlDaVez = htmlDaVez.concat(`<span class="badge badge-primary">${tagDaVez.nome}</span>`);
-                }
+    //             for (z in caraDaVez.tags) {
+    //                 tagDaVez = caraDaVez.tags[z];
+    //                 htmlDaVez = htmlDaVez.concat(`<span class="badge badge-primary">${tagDaVez.nome}</span>`);
+    //             }
 
-                htmlDaVez = htmlDaVez.concat(`</div></div>`);
-                if (usuario.length > 0) {
-                    htmlDaVez = htmlDaVez.concat(`<div class="card-footer">
-                                        <div class="row">
-                                            <div class="col-4 feedback-positivo">
-                                                <button type="button" id="`+ caraDaVez.id + `"
-                                                    class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
-                                                    style="width: 100%">
-                                                    <i class="material-icons icon">thumb_up</i>[[#{gostei}]]
-                                                </button>
-                                            </div>
-                                            <div class="col-4 feedback-negativo">
-                                                <button type="button" id="`+ caraDaVez.id + `"
-                                                    class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
-                                                    style="width: 100%">
-                                                    <i class="material-icons icon">thumb_down</i>[[#{nao-gostei}]]
-                                                </button>
-                                            </div>
-                                            <div class="col-4">
-                                                <button id="`+ caraDaVez.id + `" type="button"
-                                                    class="atribuirConteudo btn btn-secondary bmd-btn"
-                                                    style="width: 100%" data-toggle="modal"
-                                                    data-target="#tag-modal">
-                                                    <i class="material-icons icon">comment</i>
-                                                    [[#{sugerir-tag}]]
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>`);
-                }
-                template = template.concat(htmlDaVez + `</div>`);
-            }
-            template = template.concat(`</div></div>`);
-            console.log(template)
-            document.getElementById("resultadoCategoria").innerHTML = template;
-            getLikeAndDeslike();
-        });
-    });
+    //             htmlDaVez = htmlDaVez.concat(`</div></div>`);
+    //             if (usuario.length > 0) {
+    //                 htmlDaVez = htmlDaVez.concat(`<div class="card-footer">
+    //                                     <div class="row">
+    //                                         <div class="col-4 feedback-positivo">
+    //                                             <button type="button" id="`+ caraDaVez.id + `"
+    //                                                 class="atribuirConteudo enviar-feedback-positivo btn btn-secondary bmd-btn"
+    //                                                 style="width: 100%">
+    //                                                 <i class="material-icons icon">thumb_up</i>[[#{gostei}]]
+    //                                             </button>
+    //                                         </div>
+    //                                         <div class="col-4 feedback-negativo">
+    //                                             <button type="button" id="`+ caraDaVez.id + `"
+    //                                                 class="atribuirConteudo enviar-feedback-negativo btn btn-secondary bmd-btn"
+    //                                                 style="width: 100%">
+    //                                                 <i class="material-icons icon">thumb_down</i>[[#{nao-gostei}]]
+    //                                             </button>
+    //                                         </div>
+    //                                         <div class="col-4">
+    //                                             <button id="`+ caraDaVez.id + `" type="button"
+    //                                                 class="atribuirConteudo btn btn-secondary bmd-btn"
+    //                                                 style="width: 100%" data-toggle="modal"
+    //                                                 data-target="#tag-modal">
+    //                                                 <i class="material-icons icon">comment</i>
+    //                                                 [[#{sugerir-tag}]]
+    //                                             </button>
+    //                                         </div>
+    //                                     </div>
+    //                                 </div>`);
+    //             }
+    //             template = template.concat(htmlDaVez + `</div>`);
+    //         }
+    //         template = template.concat(`</div></div>`);
+    //         console.log(template)
+    //         document.getElementById("resultadoCategoria").innerHTML = template;
+    //         getLikeAndDeslike();
+    //     });
+    // });
 });

@@ -35,11 +35,11 @@ public class Init implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		if (usuarioRepository.findByUsuario("admin") == null) {
 			for (String tipo : Arrays.asList("image", "video", "text", "audio")) {
 				Files.createDirectories(Paths.get("src/main/resources/static/" + tipo + "-dir"));
 			}
 
+			if (usuarioRepository.findByUsuario("admin") == null) {
 			List<Usuario> usuarios = Arrays.asList(
 					new Usuario().setUsuario("admin").setSenha("admin").setTipo(TipoUsuario.ADMINISTRADOR),
 					new Usuario().setUsuario("estagiario").setSenha("estagiario").setTipo(TipoUsuario.ESTAGIARIO),

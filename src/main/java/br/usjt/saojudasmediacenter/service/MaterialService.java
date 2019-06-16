@@ -33,7 +33,7 @@ public class MaterialService {
 			fileToMaterial(file, material, nome);
 			
 			material = materialRepository.save(material);
-			
+			Files.createDirectories(Paths.get("src/main/resources/static/" + material.getTipo() + "-dir"));
 			Path location = Paths.get(directoryPrefix + File.separator + material.getTipo() + "-dir");
 			Files.copy(inputStream, location.resolve(material.getId() + '.' + material.getExtensao()), StandardCopyOption.REPLACE_EXISTING);
 			TimeUnit.SECONDS.sleep(5);

@@ -38,40 +38,76 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg sticky-top">
+	<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
 		<a href="/" class="navbar-brand"><img src="/img/logo-mediacenter-bgwhite.png" alt="Logo Media Center"
-				style="width: 210px"></a>
+				style="width: 180px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
 			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbar">
-			<div class="form-inline ml-auto my-2 my-lg-0">
-				<th:block th:if="${usuario}">
-					<a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link btn-outline-success"
-						href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
-					<a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link btn-outline-success"
-						href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
-				</th:block>
+
+		<!--dropdown das categorias-->
+
+			<div class="dropdown mt-2">
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownCategoria" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" th:text="#{busca-por-categoria}">
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownCategoria">
+					<a th:each="categoria : ${categorias}"
+						th:href="@{/categorias/conteudo/} + ${categoria.id}"> <!-- + @{/?tagsParam=} + ${tagsParam} -->
+						<button type="button" class="m-auto buscaCategoria btn btn-primary col-12"
+							th:id="${categoria.id}">
+							<th:block th:text="${categoria.nome}"></th:block>
+							<span class="badge badge-primary badge-categoria"
+								th:text="${categoria.conteudos.size()}"></span>
+						</button>
+					</a>
+				</div>
+			</div>
+		
+			
+			<div class="form-inline form ml-auto my-2 my-lg-0">
+
+				<!--painel-->
+				
+					<th:block th:if="${usuario}">
+						<a th:if="${usuario.tipo.toString()} == ESTAGIARIO" class="nav-link painel btn btn-outline-success mr-3 mt-2"
+							href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
+						<a th:if="${usuario.tipo.toString()} == ADMINISTRADOR" class="nav-link painel btn btn-outline-success mr-3 mt-2"
+							href="/sugestoes/dashboard" th:text="#{dashboard}"></a>
+					</th:block>
 				&nbsp
 				<div class="dropdown mr-5">
-					<button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="material-icons" style="vertical-align: middle;">language</i>
-					</button>
-					<div class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" th:text="#{lang.eng}" href="?lang=en"></a>
-						<a class="dropdown-item" th:text="#{lang.es}" href="?lang=es"></a>
-						<a class="dropdown-item" th:text="#{lang.pt}" href="?lang=pt"></a>
-					</div>
+
+					<!--dropdown idiomas-->
+					
+
+						<button class="btn btn-outline-danger dropdown-toggle mt-2" type="button" id="dropdownIdioma"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="material-icons" style="vertical-align: middle;">language</i>
+						</button>
+						<div class="dropdown-menu text-uppercase" aria-labelledby="dropdownIdioma">
+							<a class="dropdown-item" th:text="#{lang.eng}" href="/conteudos/timeline?lang=en"></a>
+							<a class="dropdown-item" th:text="#{lang.es}" href="/conteudos/timeline?lang=es"></a>
+							<a class="dropdown-item" th:text="#{lang.pt}" href="/conteudos/timeline?lang=pt"></a>
+						</div>
 				</div>
+
+				<!--barra de search-->
+
+				<form method="get" action="/tags/conteudo" class="form-inline">
+					<!-- <label class="bmd-label-floating" for="tagsParam" th:text="#{pesquisar}"></label> -->
+					<input type="search" name="tagsParam" id="tagsParam" class="form-control mr-sm-2 inputTags" th:placeholder="#{pesquisar}">
+					<button type="submit" class="btn btn-outline-primary" th:text="#{pesquisar}"></button>
+				</form>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container-fluid">
 		<div class="row profile">
-			<div class="col-md-2">
+			<div class="col-md-6 col-lg-2">
 				<div class="profile-sidebar">
 					<div class="profile-user-pic">
 						<img src="/img/avatar-372-456324.png" alt="Usuário" class="img-responsive img-circle img-user">
@@ -88,21 +124,22 @@
 							<span class="badge badge-primary profissao-badge" th:text="#{COMUM}"></span>
 						</div>
 					</div>
+					<hr>
 					<div class="profile-user-buttons">
 						<a th:if="${usuario} == null" href="/usuarios/login" class="btn btn-outline-success"
 							th:text="#{login}"></a> <a th:if="${usuario}" href="/logout"><button
 								class="btn btn-danger btn-sm" th:text="#{sair}"></button></a>
 					</div>
-					<hr>
+
 					<div class="search">
-						<form method="get" action="/tags/conteudo" class="form-inline">
+						<!-- <form method="get" action="/tags/conteudo" class="form-inline formulario">
 							<div class="form-group tag-search">
 								<label for="tagsParam" th:text="#{pesquisar}"></label>
 								<input type="text" name="tagsParam" id="tagsParam" class="form-control">
 							</div>
 							<button type="submit" class="btn btn-outline-primary mt-4" th:text="#{pesquisar}"></button>
-						</form>
-						<div class="categorias">
+						</form> -->
+						<!-- <div class="categorias">
 							<span class="badge badge-info text-uppercase mb-2" th:text="#{busca-por-categoria}"></span>
 							<div class="row" th:each="categoria : ${categorias}">
 								<a class="m-auto" th:href="@{/categorias/conteudo/} + ${categoria.id}">
@@ -113,7 +150,7 @@
 									</button>
 								</a>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -133,6 +170,8 @@
 						aria-labelledby="nav-recentes-tab">
 						<div class="container">
 							<div class="row">
+								
+								<div th:if="${maisRecentes.size()} == 0" th:text="#{conteudo-inexistente}"></div>
 								<div class="col-sm-12 col-lg-12" th:each="conteudo : ${maisRecentes}">
 									<div class="card mt-4">
 										<div class="card-header">
@@ -189,6 +228,8 @@
 					<div class="tab-pane fade" id="lidas" role="tabpanel" aria-labelledby="nav-lidas-tab">
 						<div class="container">
 							<div class="row">
+
+								<div th:if="${maisRecentes.size()} == 0" th:text="#{conteudo-inexistente}"></div>
 								<div class="col-sm-12 col-lg-12" th:each="conteudo : ${maisPositivas}">
 									<div class="card mt-4">
 										<div class="card-header">
@@ -265,8 +306,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"
-						th:text="#{fechar}"></button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal" th:text="#{fechar}"></button>
 					<button type="button" class="btn btn-primary enviar-sugestao" th:text="#{enviar}"></button>
 				</div>
 			</div>

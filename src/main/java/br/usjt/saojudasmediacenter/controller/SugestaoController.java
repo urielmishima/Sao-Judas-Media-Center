@@ -33,8 +33,12 @@ public class SugestaoController {
 	@Autowired private UsuarioService usuarioService;
 	
 	@PostMapping
-	public String sugestao(Sugestao sugestao) {
-		sugestaoService.save(sugestao);
+	public String sugestao(String sugestaoTxt, String usuario, String conteudo) {
+		for (String sugestao : sugestaoTxt.split(" ")) {
+			sugestaoService.save(new Sugestao().setSugestao(sugestao)
+												.setUsuario(new Usuario().setId(usuario))
+												.setConteudo(new Conteudo().setId(conteudo)));
+		}
 		return "redirect:/";
 	}	
 	

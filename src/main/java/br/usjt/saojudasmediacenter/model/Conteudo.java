@@ -41,7 +41,6 @@ public class Conteudo {
 	private String descricao;
 	
 	@Lob
-	@NotEmpty
 	private String conteudo;
 	
 	@NotNull

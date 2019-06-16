@@ -60,24 +60,27 @@ public class Sugestao {
 		return sugestao;
 	}
 
-	public void setSugestao(String sugestao) {
+	public Sugestao setSugestao(String sugestao) {
 		this.sugestao = sugestao;
+		return this;
 	}
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public Sugestao setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+		return this;
 	}
 
 	public Conteudo getConteudo() {
 		return conteudo;
 	}
 
-	public void setConteudo(Conteudo conteudo) {
+	public Sugestao setConteudo(Conteudo conteudo) {
 		this.conteudo = conteudo;
+		return this;
 	}
 
 	public TipoFeedback getFeedback() {
